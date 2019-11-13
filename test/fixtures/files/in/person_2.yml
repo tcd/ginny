@@ -1,0 +1,9 @@
+---
+name: Person
+description:
+attrs:
+- name: Name
+  type: String
+- name: Age
+  description: Number of years the person has been alive.
+  type: Integer

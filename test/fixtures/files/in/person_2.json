@@ -1,0 +1,16 @@
+{
+  "name": "Person",
+  "description": null,
+  "attrs": [
+    {
+      "name": "Name",
+      "description": null,
+      "type": "String"
+    },
+    {
+      "name": "Age",
+      "description": "Number of years the person has been alive.",
+      "type": "Integer"
+    }
+  ]
+}
