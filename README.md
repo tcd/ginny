@@ -49,8 +49,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Links
 
-- [ERB Docs](https://ruby-doc.org/stdlib-2.6.5/libdoc/erb/rdoc/ERB.html#method-c-new)
 - [GoogleCloudPlatform/magic-modules](https://github.com/GoogleCloudPlatform/magic-modules/blob/master/compile/core.rb)
 - [activesupport/core_ext/string](https://github.com/rails/rails/tree/master/activesupport/lib/active_support/core_ext/string)
+- [ERB Docs](https://ruby-doc.org/stdlib-2.6.5/libdoc/erb/rdoc/ERB.html#method-c-new)
 - [ERB Render Standard](https://idiosyncratic-ruby.com/36-erb-render-standard.html)
 - [An Introduction to ERB Templating](https://www.stuartellis.name/articles/erb/)
+- [jeremyevans/erubi](https://github.com/jeremyevans/erubi)
