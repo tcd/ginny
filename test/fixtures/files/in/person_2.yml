@@ -1,6 +1,5 @@
 ---
 name: Person
-description:
 attrs:
 - name: Name
   type: String

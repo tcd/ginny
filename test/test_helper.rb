@@ -6,7 +6,7 @@ SimpleCov.start do
 
   track_files "lib/**/*.rb"
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-    SimpleCov::Formatter::HTMLFormatter,
+    # SimpleCov::Formatter::HTMLFormatter,
     # SimpleCov::Formatter::Console,
   ])
 end
@@ -23,8 +23,8 @@ require "minitest/autorun"
 require "minitest/focus"
 require "minitest/reporters"
 Minitest::Reporters.use!([
-  # Minitest::Reporters::DefaultReporter.new(color: true),
-  Minitest::Reporters::SpecReporter.new,
+  Minitest::Reporters::DefaultReporter.new(color: true),
+  # Minitest::Reporters::SpecReporter.new,
 ])
 
 # Return Pathname for a file used in tests.

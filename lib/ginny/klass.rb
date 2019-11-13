@@ -1,9 +1,5 @@
-require "erb"
-
 module Ginny
   class Klass
-    include ERB::Util
-
     # @!attribute name [rw]
     #   @return [String]
     attr_accessor :name
@@ -25,6 +21,7 @@ module Ginny
       k = Klass.new()
       k.name = args[:name]
       k.description = args[:description]
+      k.attrs = Attribute.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       return k
     end
 
@@ -51,8 +48,6 @@ module Ginny
   end
 
   class Attribute
-    include ERB::Util
-
     # @!attribute name [rw]
     #   @return [String]
     attr_accessor :name
@@ -94,7 +89,7 @@ module Ginny
       parts << self.render_attr().comment
       parts << self.render_description()
       parts << "@return [#{self.type}]".indent(2).comment
-      parts << "attr_accessor :#{self.name}"
+      parts << "attr_accessor :#{self.name.downcase}"
       return parts.compact.join("\n")
     end
 
@@ -102,7 +97,7 @@ module Ginny
     def render_attr()
       access = "r"
       access << "w" unless self.read_only
-      return "@!attribute #{self.name} [#{access}]"
+      return "@!attribute #{self.name.downcase} [#{access}]"
     end
 
     # @return [String]
