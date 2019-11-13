@@ -1,8 +1,7 @@
 require "ginny/version"
 require "ginny/error"
+require "ginny/symbolize"
 require "ginny/string"
 require "ginny/klass"
 
-module Ginny
-  class Error < StandardError; end
-end
+module Ginny; end

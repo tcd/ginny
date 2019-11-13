@@ -1,8 +1,7 @@
 require "test_helper"
-require "yaml"
-require "pry"
 
 class GinnyTest < Minitest::Test
+
   def test_that_it_has_a_version_number
     refute_nil(::Ginny::VERSION)
   end
@@ -30,13 +29,5 @@ class GinnyTest < Minitest::Test
     have = k.render()
     assert_equal(want, have)
   end
-
-  # def test_attribute_constructor
-  #   # dat = File.read(file_fixture("out/person_2.rb"))
-  #   data = YAML.load_file(file_fixture("in/person_2.yml"))
-  #   binding.pry
-  #   have = Ginny::Attribute.from_array(data["attrs"])
-  #   assert_equal(2, have.length)
-  # end
 
 end
