@@ -1,3 +1,3 @@
-module Rbs
+module Ginny
   class Error < StandardError; end
 end

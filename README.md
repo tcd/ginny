@@ -1,7 +1,7 @@
-# Rbs
+# Ginny
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. 
-Put your Ruby code in the file `lib/rbs`. 
+Put your Ruby code in the file `lib/ginny`. 
 To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
@@ -11,7 +11,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rbs'
+gem 'ginny'
 ```
 
 And then execute:
@@ -23,7 +23,7 @@ bundle
 Or install it yourself as:
 
 ```ruby
-gem install rbs
+gem install ginny
 ```
 
 ## Usage
@@ -41,8 +41,16 @@ To release a new version, update the version number in `version.rb`, and then ru
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/tcd/rbs.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tcd/ginny.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Links
+
+- [ERB Docs](https://ruby-doc.org/stdlib-2.6.5/libdoc/erb/rdoc/ERB.html#method-c-new)
+- [GoogleCloudPlatform/magic-modules](https://github.com/GoogleCloudPlatform/magic-modules/blob/master/compile/core.rb)
+- [activesupport/core_ext/string](https://github.com/rails/rails/tree/master/activesupport/lib/active_support/core_ext/string)
+- [ERB Render Standard](https://idiosyncratic-ruby.com/36-erb-render-standard.html)
+- [An Introduction to ERB Templating](https://www.stuartellis.name/articles/erb/)

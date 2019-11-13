@@ -1,16 +1,16 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rbs/version"
+require "ginny/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "rbs"
-  spec.version       = Rbs::VERSION
+  spec.name          = "ginny"
+  spec.version       = Ginny::VERSION
   spec.authors       = ["Clay Dunston"]
   spec.email         = ["dunstontc@gmail.com"]
 
   spec.summary       = "Generate Ruby code."
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/tcd/rbs"
+  spec.homepage      = "https://github.com/tcd/ginny"
   spec.license       = "MIT"
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
