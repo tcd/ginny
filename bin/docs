@@ -1,0 +1,1 @@
+rm -rf .yardoc && yard server -r --charset utf-8 --markup markdown

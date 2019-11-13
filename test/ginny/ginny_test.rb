@@ -8,21 +8,21 @@ class GinnyTest < Minitest::Test
   end
 
   def test_1
-    want = File.read(file_fixture("out/person_1.rb"))
+    want = File.read(file_fixture("out/person_1.rb")).strip
     have = Ginny::Klass.create(name: "Clay", description: "An awesome guy.").render()
     assert_equal(want, have)
   end
 
   def test_2
-    want = File.read(file_fixture("out/person_2.rb"))
+    want = File.read(file_fixture("out/person_2.rb")).strip
     k = Ginny::Klass.create(name: "Person")
     k.attrs = Ginny::Attribute.from_array([
       {
-        name: "Name",
+        name: "name",
         type: "String"
       },
       {
-        name: "Age",
+        name: "age",
         description: "Number of years the person has been alive.",
         type: "Integer"
       },

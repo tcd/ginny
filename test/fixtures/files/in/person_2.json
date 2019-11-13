@@ -3,12 +3,12 @@
   "description": null,
   "attrs": [
     {
-      "name": "Name",
+      "name": "name",
       "description": null,
       "type": "String"
     },
     {
-      "name": "Age",
+      "name": "age",
       "description": "Number of years the person has been alive.",
       "type": "Integer"
     }

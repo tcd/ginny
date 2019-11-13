@@ -19,7 +19,7 @@ module Ginny
       self.attrs = []
     end
 
-    # @param args [Hash<String>]
+    # @param args [Hash<Symbol>]
     # @return [Klass]
     def self.create(args = {})
       k = Klass.new()
@@ -29,25 +29,24 @@ module Ginny
     end
 
     # @return [String]
-    def template()
-      return <<~ERB
-        <%=- render_description %>
-        class <%= @name %>
-          <%- for @attr in attrs -%>
-            <%=- @attr.render %>
-          <%- end -%>
-        end
-      ERB
-    end
-
-    # @return [String]
     def render()
-      ERB.new(self.template, trim_mode: "-").result(binding)
+      parts = []
+      parts << render_description()
+      parts << "class #{self.name}"
+      parts << self.render_attributes()
+      parts << "end"
+      return parts.compact.join("\n").strip
     end
 
     # @return [String]
     def render_description()
       return (self.description&.length&.positive? ? self.description.comment : "")
+    end
+
+    # @return [String]
+    def render_attributes()
+      return nil unless self.attrs.length > 0
+      return self.attrs.map(&:render).join("\n").indent(2)
     end
   end
 
@@ -72,6 +71,7 @@ module Ginny
       self.read_only = false
     end
 
+    # @param args [Hash]
     # @return [Attribute]
     def self.create(args = {})
       a = Attribute.new()
@@ -82,20 +82,6 @@ module Ginny
       return a
     end
 
-    # # @param name [String]
-    # # @param description [String]
-    # # @param type [String]
-    # # @param read_only [Boolean]
-    # # @return [Attribute]
-    # def self.create(name: "", description: "", type: nil, read_only: false)
-    #   a = Attribute.new()
-    #   a.name        = name
-    #   a.description = description
-    #   a.type        = type
-    #   a.read_only   = read_only
-    #   return a
-    # end
-
     # @param array [Array<Hash>]
     # @return [Array<self>]
     def self.from_array(array)
@@ -103,36 +89,17 @@ module Ginny
     end
 
     # @return [String]
-    def template_1()
-      return <<~ERB
-        # @!attribute grams [rw]
-        #   The weight of the product variant in grams.
-        #   @return []
-      ERB
-    end
-
-    # @return [String]
-    def template()
-      return <<~ERB
-        # <%= attr_string %>
-            <%=- render_description %>
-        #   <%= type_string %>
-        <%= attr_string %>
-      ERB
-    end
-
-    # @return [String]
     def render()
-      ERB.new(self.template, trim_mode: "-").result(binding)
+      parts = []
+      parts << self.render_attr().comment
+      parts << self.render_description()
+      parts << "@return [#{self.type}]".indent(2).comment
+      parts << "attr_accessor :#{self.name}"
+      return parts.compact.join("\n")
     end
 
     # @return [String]
-    def type_string()
-      return "@return [#{self.type}]"
-    end
-
-    # @return [String]
-    def attr_string()
+    def render_attr()
       access = "r"
       access << "w" unless self.read_only
       return "@!attribute #{self.name} [#{access}]"
@@ -140,7 +107,7 @@ module Ginny
 
     # @return [String]
     def render_description()
-      return (self.description&.length&.positive? ? self.description.comment : "")
+      return (self.description&.length&.positive? ? self.description.indent(2).comment : nil)
     end
 
   end
