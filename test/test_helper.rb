@@ -1,5 +1,4 @@
 require "simplecov"
-require "simplecov-console"
 SimpleCov.start do
   add_filter "/bin/"
   add_filter "/test/"
