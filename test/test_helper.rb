@@ -10,10 +10,6 @@ SimpleCov.start do
     # SimpleCov::Formatter::Console,
   ])
 end
-# if ENV["CI"] == "true"
-#   require "codecov"
-#   SimpleCov.formatter = SimpleCov::Formatter::Codecov
-# end
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "ginny"
