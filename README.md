@@ -3,9 +3,10 @@
 [![Build Status](https://travis-ci.org/tcd/gql.svg?branch=master)](https://travis-ci.org/tcd/gql)
 [![Coverage Status](https://coveralls.io/repos/github/tcd/ginny/badge.svg?branch=master)](https://coveralls.io/github/tcd/ginny?branch=master)
 [![Documentation](http://img.shields.io/badge/docs-rubydoc.org-blue.svg)](https://rubydoc.org/github/tcd/ginny/master)
-[![Inline docs](http://inch-ci.org/github/tcd/ginny.svg?branch=master&style=shields)](http://inch-ci.org/github/tcd/ginny)
-[![Gem Version](https://badge.fury.io/rb/ginny.svg)](https://badge.fury.io/rb/ginny)
 ![GitHub](https://img.shields.io/github/license/tcd/ginny)
+
+<!-- [![Inline docs](http://inch-ci.org/github/tcd/ginny.svg?branch=master&style=shields)](http://inch-ci.org/github/tcd/ginny)
+[![Gem Version](https://badge.fury.io/rb/ginny.svg)](https://badge.fury.io/rb/ginny) -->
 
 ## Installation
 
