@@ -18,11 +18,20 @@ module Ginny
     # @param args [Hash<Symbol>]
     # @return [Klass]
     def self.create(args = {})
-      k = Klass.new()
+      k = Ginny::Klass.new()
       k.name = args[:name]
       k.description = args[:description]
-      k.attrs = Attribute.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
+      k.attrs = Ginny::Attribute.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       return k
+    end
+
+    # @param folder [String]
+    # @return [String]
+    def write_to_file(folder)
+      name = self.name.downcase + ".rb"
+      path = File.join(File.expand_path(folder), name)
+      File.open(path, "a") { |f| f.write(self.render()) }
+      return path
     end
 
     # @return [String]
@@ -31,13 +40,13 @@ module Ginny
       parts << render_description()
       parts << "class #{self.name}"
       parts << self.render_attributes()
-      parts << "end"
-      return parts.compact.join("\n").strip
+      parts << "end\n"
+      return parts.compact.join("\n")
     end
 
     # @return [String]
     def render_description()
-      return (self.description&.length&.positive? ? self.description.comment : "")
+      return (self.description&.length&.positive? ? self.description.comment.strip : "")
     end
 
     # @return [String]
@@ -69,7 +78,7 @@ module Ginny
     # @param args [Hash]
     # @return [Attribute]
     def self.create(args = {})
-      a = Attribute.new()
+      a = Ginny::Attribute.new()
       a.name = args[:name]
       a.description = args[:description]
       a.type = args[:type]
