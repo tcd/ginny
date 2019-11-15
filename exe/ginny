@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# require "optionparser"
+require "ginny"
+require "optparse"
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: ginny [options] [path]"
+  options[:verbose] = false
+  opts.on("-v", "--verbose", "Output more information") do
+    options[:verbose] = true
+  end
+  opts.on("-h", "--help", "Display this screen") do
+    puts(opts)
+    exit(0)
+  end
+end
+
+optparse.parse!
+
+ARGV.each do |f|
+  # puts "Resizing image #{f}..."
+  Ginny::Class.create(Ginny.load_yaml(f)).write_to_file(".")
+  sleep 0.5
+end
