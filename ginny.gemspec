@@ -5,7 +5,7 @@ require "ginny/version"
 Gem::Specification.new do |spec|
   spec.name          = "ginny"
   spec.version       = Ginny::VERSION
-  # spec.required_ruby_version = ">= 2.3.0"
+  spec.required_ruby_version = ">= 2.3.0"
   spec.description   = "Generate Ruby code."
   spec.summary       = spec.description
   spec.authors       = ["Clay Dunston"]
