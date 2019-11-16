@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Ginny::VERSION
   # spec.required_ruby_version = ">= 2.3.0"
   spec.description   = "Generate Ruby code."
+  spec.summary       = spec.description
   spec.authors       = ["Clay Dunston"]
   spec.email         = ["dunstontc@gmail.com"]
   spec.homepage      = "https://github.com/tcd/ginny"
