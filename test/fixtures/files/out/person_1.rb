@@ -1,3 +1,2 @@
 # An awesome guy.
-class Clay
-end
+class Clay; end

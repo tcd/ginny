@@ -1,0 +1,69 @@
+name: LineItem
+description: A historical record of an individual item in a fulfillment.
+attrs:
+- name: id
+  description: The ID of the line item within the fulfillment.
+  type: String
+- name: variant_id
+  description: The ID of the product variant being fulfilled.
+  type: String
+- name: title
+  description: The title of the product.
+  type: String
+- name: quantity
+  description: The number of items in the fulfillment.
+  type: Integer
+- name: price
+  description: The price of the item.
+  type: String
+- name: grams
+  description: The weight of the item in grams.
+  type: String
+- name: sku
+  description: The unique identifier of the item in the fulfillment.
+  type: String
+- name: variant_title
+  description: The title of the product variant being fulfilled.
+  type: String
+- name: vendor
+  description: The name of the supplier of the item.
+  type: String
+- name: fulfillment_service
+  description: The service provider who is doing the fulfillment.
+  type: String
+- name: product_id
+  description: The unique numeric identifier for the product in the fulfillment.
+  type: String
+- name: requires_shipping
+  description: Whether a customer needs to provide a shipping address when placing an order for this product variant.
+  type: Boolean
+- name: taxable
+  description: Whether the line item is taxable.
+  type: Boolean
+- name: gift_card
+  description: Whether the line item is a [gift card](https://help.shopify.com/manual/products/gift-card-products).
+  type: Boolean
+- name: name
+  description: The name of the product variant.
+  type: String
+- name: variant_inventory_management
+  description: The name of the inventory management system.
+  type: String
+- name: properties
+  description: Any additional properties associated with the line item.
+  type: Array<String>
+- name: product_exists
+  description: Whether the product exists.
+  type: String
+- name: fulfillable_quantity
+  description: The amount available to fulfill. This is the `quantity - max (refunded_quantity, fulfilled_quantity) - pending_fulfilled_quantity - open_fulfilled_quantity`.
+  type: String
+- name: total_discount
+  description: The total of any discounts applied to the line item.
+  type: String
+- name: fulfillment_status
+  description: "The status of an order in terms of the line items being fulfilled. Valid values: `fulfilled`, `null`, or `partial`."
+  type: ":fulfilled, :null, :partial"
+- name: tax_lines
+  description: The `title`, `price`, and `rate` of any taxes applied to the line item.
+  type: Array<TaxLine>
