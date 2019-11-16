@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RenderParamTest < Minitest::Test
+class ParamTest < Minitest::Test
 
   def test_simple
     want = "example"
@@ -55,6 +55,18 @@ class RenderParamTest < Minitest::Test
   def test_default_boolean_keyword
     want = "example: true"
     have = Ginny::Param.create(name: "example", default: true, keyword: true).render()
+    assert_equal(want, have)
+  end
+
+  def test_doc
+    want = "# @param example [String]"
+    have = Ginny::Param.create(name: "example", type: "String").render_doc()
+    assert_equal(want, have)
+  end
+
+  def test_doc_with_description
+    want = "# @param example [String] example description"
+    have = Ginny::Param.create(name: "example", type: "String", description: "example description").render_doc()
     assert_equal(want, have)
   end
 
