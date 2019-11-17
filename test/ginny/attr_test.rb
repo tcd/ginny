@@ -3,7 +3,7 @@ require "test_helper"
 class AttrTest < Minitest::Test
 
   def test_attr
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @return [String]
       attr_accessor :example
     RUBY
@@ -15,7 +15,7 @@ class AttrTest < Minitest::Test
   end
 
   def test_attr_with_description
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # This is just an example
       # @return [String]
       attr_accessor :example
@@ -29,7 +29,7 @@ class AttrTest < Minitest::Test
   end
 
   def test_attr_read_only
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @return [String]
       attr_reader :example
     RUBY
@@ -42,7 +42,7 @@ class AttrTest < Minitest::Test
   end
 
   def test_dynamic
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @!attribute example [rw]
       #   @return [String]
     RUBY
@@ -54,7 +54,7 @@ class AttrTest < Minitest::Test
   end
 
   def test_dynamic_with_description
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @!attribute example [rw]
       #   This is just an example
       #   @return [String]
@@ -68,7 +68,7 @@ class AttrTest < Minitest::Test
   end
 
   def test_dynamic_read_only
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @!attribute example [r]
       #   @return [String]
     RUBY
@@ -82,7 +82,7 @@ class AttrTest < Minitest::Test
 
   def test_enumerize_enum
     skip()
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @!attribute example [rw]
       #   @return [:yes, :no]
       enumerize :example, in: [:yes, :no]
@@ -96,7 +96,7 @@ class AttrTest < Minitest::Test
 
   def test_activerecord_enum
     skip()
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @!attribute example [rw]
       #   @return [:yes, :no]
       enum example: [:yes, :no]

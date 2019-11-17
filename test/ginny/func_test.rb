@@ -3,7 +3,7 @@ require "test_helper"
 class FuncTest < Minitest::Test
 
   def test_init
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @return [void]
       def initialize()
       end
@@ -13,7 +13,7 @@ class FuncTest < Minitest::Test
   end
 
   def test_description
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # Example description.
       # @return [void]
       def initialize()
@@ -24,7 +24,7 @@ class FuncTest < Minitest::Test
   end
 
   def test_return_type
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # Example description.
       # @return [String]
       def initialize()
@@ -35,7 +35,7 @@ class FuncTest < Minitest::Test
   end
 
   def test_single_param
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # Say hello.
       # @param name [String]
       # @return [String]
@@ -52,7 +52,7 @@ class FuncTest < Minitest::Test
   end
 
   def test_two_params
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # Say hello.
       # @param name [String]
       # @param loud [Boolean]
@@ -74,7 +74,7 @@ class FuncTest < Minitest::Test
 
   def test_six_params
     skip()
-    want = <<~RUBY.strip()
+    want = <<~RUBY.strip
       # @return [String]
       def argumentative(
         one,
