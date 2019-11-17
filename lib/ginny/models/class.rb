@@ -35,7 +35,7 @@ module Ginny
 
     # @param folder [String]
     # @return [String]
-    def write_to_file(folder)
+    def write(folder = ".")
       name = self.name.downcase + ".rb"
       path = File.join(File.expand_path(folder), name)
       File.open(path, "a") { |f| f.write(self.render()) }
