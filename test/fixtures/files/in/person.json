@@ -10,7 +10,8 @@
     {
       "name": "age",
       "description": "Number of years the human has been alive.",
-      "type": "Integer"
+      "type": "Integer",
+      "read_only": true
     }
   ]
 }

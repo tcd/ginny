@@ -8,3 +8,4 @@ attrs:
 - name: Age
   description: Number of years the human has been alive.
   type: Integer
+  read_only: true

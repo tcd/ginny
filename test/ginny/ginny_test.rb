@@ -10,7 +10,7 @@ class GinnyTest < Minitest::Test
         attr_accessor :name
         # Number of years the human has been alive.
         # @return [Integer]
-        attr_accessor :age
+        attr_reader :age
       end
     RUBY
   end
