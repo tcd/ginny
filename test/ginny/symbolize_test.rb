@@ -20,28 +20,12 @@ class SymbolizeTest < Minitest::Test
 
   def test_array_of_objects
     input = [
-      {
-        "name" => "Name",
-        "description" => nil,
-        "type" => "String",
-      },
-      {
-        "name" => "Age",
-        "description" => "Number of years the person has been alive.",
-        "type" => "Integer",
-      },
+      { "name" => "Name", "description" => nil, "type" => "String" },
+      { "name" => "Age", "description" => "Number of years the person has been alive.", "type" => "Integer" },
     ]
     want = [
-      {
-        name: "Name",
-        description: nil,
-        type: "String",
-      },
-      {
-        name: "Age",
-        description: "Number of years the person has been alive.",
-        type: "Integer",
-      },
+      { name: "Name", description: nil, type: "String" },
+      { name: "Age", description: "Number of years the person has been alive.", type: "Integer" },
     ]
     assert_equal(want, Ginny.symbolize_keys(input))
   end
@@ -49,30 +33,14 @@ class SymbolizeTest < Minitest::Test
   def test_object_with_array_of_objects
     input = {
       "data" => [
-        {
-          "name" => "Name",
-          "description" => nil,
-          "type" => "String",
-        },
-        {
-          "name" => "Age",
-          "description" => "Number of years the person has been alive.",
-          "type" => "Integer",
-        },
+        { "name" => "Name", "description" => nil, "type" => "String" },
+        { "name" => "Age", "description" => "Number of years the person has been alive.", "type" => "Integer" },
       ],
     }
     want = {
       data: [
-        {
-          name: "Name",
-          description: nil,
-          type: "String",
-        },
-        {
-          name: "Age",
-          description: "Number of years the person has been alive.",
-          type: "Integer",
-        },
+        { name: "Name", description: nil, type: "String" },
+        { name: "Age", description: "Number of years the person has been alive.", type: "Integer" },
       ],
     }
     assert_equal(want, Ginny.symbolize_keys(input))
@@ -82,32 +50,16 @@ class SymbolizeTest < Minitest::Test
     input = {
       "name" => "Person",
       "attrs": [
-        {
-          "name" => "Name",
-          "description" => nil,
-          "type" => "String",
-        },
-        {
-          "name" => "Age",
-          "description" => "Number of years the person has been alive.",
-          "type" => "Integer",
-        },
+        { "name" => "Name", "description" => nil, "type" => "String" },
+        { "name" => "Age", "description" => "Number of years the person has been alive.", "type" => "Integer" },
       ],
     }
 
     want = {
       name: "Person",
       attrs: [
-        {
-          name: "Name",
-          description: nil,
-          type: "String",
-        },
-        {
-          name: "Age",
-          description: "Number of years the person has been alive.",
-          type: "Integer",
-        },
+        { name: "Name", description: nil, type: "String" },
+        { name: "Age", description: "Number of years the person has been alive.", type: "Integer" },
       ],
     }
     assert_equal(want, Ginny.symbolize_keys(input))
