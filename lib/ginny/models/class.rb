@@ -20,7 +20,7 @@ module Ginny
       c.name = args[:name]
       c.description = args[:description]
       c.attrs = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
-      return k
+      return c
     end
 
     # @param folder [String]
