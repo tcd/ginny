@@ -1,4 +1,9 @@
 module Ginny
+  # Instance variables with getters/setters.
+  #
+  # [attr]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr
+  # [attr_accessor]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr_accessor
+  # [attr_reader]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr_reader
   class Attr
     # @return [String]
     attr_accessor :name
@@ -37,9 +42,9 @@ module Ginny
     # @return [String]
     def render()
       parts = []
-      parts << self.render_description()
+      parts << (@description&.length&.positive? ? @description.comment : nil)
       parts << "@return [#{self.type}]".comment
-      parts << "attr_accessor :#{self.name.downcase}"
+      parts << "attr_#{self.read_only ? 'reader' : 'accessor'} :#{self.name.downcase}"
       return parts.compact.join("\n")
     end
 
@@ -51,24 +56,10 @@ module Ginny
     # @return [String]
     def render_dynamic()
       parts = []
-      parts << self.render_attr().comment
-      parts << self.render_description()
+      parts << "@!attribute #{self.name.downcase} [#{self.read_only ? 'r' : 'rw'}]".comment
+      parts << (@description&.length&.positive? ? @description.indent(2).comment : nil)
       parts << "@return [#{self.type}]".indent(2).comment
-      parts << "attr_accessor :#{self.name.downcase}"
       return parts.compact.join("\n")
     end
-
-    # @return [String]
-    def render_attr()
-      access = "r"
-      access << "w" unless self.read_only
-      return "@!attribute #{self.name.downcase} [#{access}]"
-    end
-
-    # @return [String]
-    def render_description()
-      return (self.description&.length&.positive? ? self.description.indent(2).comment : nil)
-    end
-
   end
 end
