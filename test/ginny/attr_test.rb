@@ -50,7 +50,7 @@ class AttrTest < Minitest::Test
       name: "example",
       type: "String",
     ).render_dynamic()
-    assert_equal_and_print(want, have)
+    assert_equal(want, have)
   end
 
   def test_dynamic_with_description
@@ -64,7 +64,7 @@ class AttrTest < Minitest::Test
       type: "String",
       description: "This is just an example",
     ).render_dynamic()
-    assert_equal_and_print(want, have)
+    assert_equal(want, have)
   end
 
   def test_dynamic_read_only
