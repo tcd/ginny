@@ -25,6 +25,8 @@ module Ginny
       self.params = []
     end
 
+    # Constructor for a Func. Use `create`, not `new`.
+    #
     # @param args [Hash<Symbol>]
     # @return [Ginny::Func]
     def self.create(args = {})

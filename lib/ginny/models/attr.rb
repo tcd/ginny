@@ -27,6 +27,8 @@ module Ginny
       self.read_only = false
     end
 
+    # Constructor for an Attr. Use `create`, not `new`.
+    #
     # @param args [Hash]
     # @return [Attr]
     def self.create(args = {})

@@ -1,5 +1,4 @@
 module Ginny
-
   # Used to generate a function [parameter][2].
   #
   # [1]: http://ruby-for-beginners.rubymonstas.org/bonus/arguments_parameters.html
@@ -27,8 +26,10 @@ module Ginny
     # @return [Boolean]
     attr_accessor :keyword
 
-    # @param [Hash] args
-    # @option args [required, String] :name
+    # Constructor for a Param. Use `create`, not `new`.
+    #
+    # @param [Hash<Symbol>] args
+    # @option args [String] :name
     # @option args [String] :description
     # @option args [String] :type
     # @option args [Object] :default
