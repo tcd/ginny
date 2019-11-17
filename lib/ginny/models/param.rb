@@ -1,4 +1,7 @@
 module Ginny
+  # [Parameters](http://ruby-for-beginners.rubymonstas.org/bonus/arguments_parameters.html)
+  #
+  # [2]: https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html#label-Arguments
   class Param
     # @return [String]
     attr_accessor :name
@@ -18,7 +21,7 @@ module Ginny
     # @return [Boolean]
     attr_accessor :keyword
 
-    # @param args [Hash]
+    # @param [Hash] args
     # @option args [required, String] :name
     # @option args [String] :description
     # @option args [String] :type
@@ -69,6 +72,11 @@ module Ginny
       return ":#{self.default}" if self.type == "Symbol" || self.default.is_a?(Symbol)
       # `to_s` should handle everything else.
       return self.default.to_s
+    end
+
+    # @return [String]
+    def render_doc
+      return "# @param #{self.name} [#{self.type}] #{self.description}".strip
     end
   end
 end
