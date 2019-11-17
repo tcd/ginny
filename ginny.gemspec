@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.metadata = {
-    "allowed_push_host" => "TODO: Set to 'http://mygemserver.com'",
     "homepage_uri" => spec.homepage,
     "source_code_uri" => spec.homepage,
     "changelog_uri" => "https://github.com/tcd/ginny/blob/master/CHANGELOG.md",
