@@ -1,6 +1,18 @@
 # Monkeypatch some convenience methods in to the String class.
 class String
 
+  # def titleize2(string)
+  #   words = self.split(" ")
+  #   skips = ["and", "of", "the", "in", "to", "over", "an", "a"]
+  #   words.each do |word|
+  #     if word == words[0] || !skips.include?(word)
+  #         element.capitalize!
+  #     end
+  #   end
+  #   answer = array.join(" ")
+  #   return answer
+  # end
+
   # Same as {indent}, except it indents the receiver in-place.
   #
   # Returns the indented string, or `nil` if there was nothing to indent.
@@ -37,20 +49,4 @@ class String
     dup.tap { |s| s.indent!(amount, indent_string, indent_empty_lines) }
   end
 
-  # Adds a comment string (`"# "`) after every newline in a string.
-  #
-  # @param indent_empty_lines [Boolean]
-  # @return [void]
-  def comment!(indent_empty_lines = true)
-    re = indent_empty_lines ? /^/ : /^(?!$)/
-    gsub!(re, "# ")
-  end
-
-  # Returns a copy of a string with a comment (`"# "`) after every newline in a string.
-  #
-  # @param indent_empty_lines [Boolean]
-  # @return [String]
-  def comment(indent_empty_lines = true)
-    dup.tap { |s| s.comment!(indent_empty_lines) }
-  end
 end
