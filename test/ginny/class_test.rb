@@ -1,0 +1,61 @@
+require "test_helper"
+
+class ClassTest < Minitest::Test
+
+  def test_empty_class_with_no_description
+    want = <<~RUBY.strip
+      class Example
+      end
+    RUBY
+    have = Ginny::Class.create(name: "Example").render()
+    assert_equal_and_print(want, have)
+  end
+
+  def test_empty_class_with_description
+    want = <<~RUBY.strip
+      # This is just an example.
+      class Example
+      end
+    RUBY
+    have = Ginny::Class.create(
+      name: "Example",
+      description: "This is just an example.",
+    ).render()
+    assert_equal(want, have)
+  end
+
+  def test_empty_class_with_parent
+    want = <<~RUBY.strip
+      # This example is object-oriented.
+      class Example < Parent
+      end
+    RUBY
+    have = Ginny::Class.create(
+      name: "Example",
+      description: "This example is object-oriented.",
+      parent: "Parent",
+    ).render()
+    assert_equal(want, have)
+  end
+
+  def test_class_with_attributes
+    want = <<~RUBY.strip
+      class Person
+        # @return [String]
+        attr_accessor :name
+        # Number of years the person has been alive.
+        # @return [Integer]
+        attr_accessor :age
+      end
+    RUBY
+    have = Ginny::Class.create(
+      name: "Person",
+      attrs: [
+        { name: "name", type: "String" },
+        { name: "age", description: "Number of years the person has been alive.", type: "Integer" },
+      ],
+    ).render()
+    assert_equal(want.strip, have.strip)
+  end
+
+end

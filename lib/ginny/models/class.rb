@@ -1,10 +1,17 @@
 module Ginny
-  # [Classes](https://ruby-doc.org/core-2.6.5/Class.html)
+  # Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html)
   class Class
+
+    # Name of the class.
     # @return [String]
     attr_accessor :name
+    # Description of the class. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
     # @return [String]
     attr_accessor :description
+    # Name of a class to inherit from. (Ex: `YourNewClass < Parent`)
+    # @return [String]
+    attr_accessor :parent
+    # An array of {Ginny::Attr}s.
     # @return [Array<Ginny::Attr>]
     attr_accessor :attrs
 
@@ -13,13 +20,16 @@ module Ginny
       self.attrs = []
     end
 
+    # Constructor for a Class. Use `create`, not `new`.
+    #
     # @param args [Hash<Symbol>]
     # @return [Class]
     def self.create(args = {})
       c = Ginny::Class.new()
-      c.name = args[:name]
+      c.name        = args[:name]
       c.description = args[:description]
-      c.attrs = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
+      c.parent      = args[:parent]
+      c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       return c
     end
 
@@ -35,16 +45,11 @@ module Ginny
     # @return [String]
     def render()
       parts = []
-      parts << render_description()
-      parts << "class #{self.name}"
+      parts << (self.description&.length&.positive? ? self.description.comment.strip : nil)
+      parts << (self.parent.nil? ? "class #{self.name}" : "class #{self.name} < #{self.parent}")
       parts << self.render_attributes()
-      parts << "end\n"
+      parts << "end"
       return parts.compact.join("\n")
-    end
-
-    # @return [String]
-    def render_description()
-      return (self.description&.length&.positive? ? self.description.comment.strip : "")
     end
 
     # @return [String]
