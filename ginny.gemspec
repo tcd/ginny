@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     "allowed_push_host" => "TODO: Set to 'http://mygemserver.com'",
     "homepage_uri" => spec.homepage,
     "source_code_uri" => spec.homepage,
-    "changelog_uri" => spec.homepage,
+    "changelog_uri" => "https://github.com/tcd/ginny/blob/master/CHANGELOG.md",
     "yard.run" => "yri", # use "yard" to build full HTML docs.
   }
 

@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.2.0 (2019-11-17)
+
 ### Added
 
 - Generate Functions with Yard doc comments. (`Ginny::Func`)
