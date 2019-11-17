@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.6.0
+  TargetRubyVersion: 2.3.0
 
 Style/Documentation:
   Enabled: true
@@ -11,12 +11,16 @@ Style/DocumentationMethod:
   Exclude:
     - 'test/**/*.rb'
 
+Layout/EmptyLinesAroundClassBody:
+  Exclude:
+    - 'test/**/*.rb'
+
 # Don't leave calls to pry lying around.
 Lint/Debugger:
   Enabled: true
 
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
