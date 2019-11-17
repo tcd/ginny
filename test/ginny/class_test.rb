@@ -40,19 +40,22 @@ class ClassTest < Minitest::Test
 
   def test_class_with_attributes
     want = <<~RUBY.strip
-      class Person
+      # This class models a person.
+      class Human < Mammal
         # @return [String]
         attr_accessor :name
-        # Number of years the person has been alive.
+        # Number of years the human has been alive.
         # @return [Integer]
         attr_accessor :age
       end
     RUBY
     have = Ginny::Class.create(
-      name: "Person",
+      name: "Human",
+      description: "This class models a person.",
+      parent: "Mammal",
       attrs: [
         { name: "name", type: "String" },
-        { name: "age", description: "Number of years the person has been alive.", type: "Integer" },
+        { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
       ],
     ).render()
     assert_equal(want.strip, have.strip)

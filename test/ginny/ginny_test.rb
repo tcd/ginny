@@ -2,36 +2,31 @@ require "test_helper"
 
 class GinnyTest < Minitest::Test
 
+  def setup
+    @person = <<~RUBY.strip
+      # This class models a person.
+      class Human < Mammal
+        # @return [String]
+        attr_accessor :name
+        # Number of years the human has been alive.
+        # @return [Integer]
+        attr_accessor :age
+      end
+    RUBY
+  end
+
   def test_that_it_has_a_version_number
     refute_nil(::Ginny::VERSION)
   end
 
   def test_load_from_json
-    want = <<~RUBY.strip
-      class Person
-        # @return [String]
-        attr_accessor :name
-        # Number of years the person has been alive.
-        # @return [Integer]
-        attr_accessor :age
-      end
-    RUBY
     have = Ginny::Class.create(Ginny.load_json(file_fixture("in/person.json"))).render()
-    assert_equal(want.strip, have.strip)
+    assert_equal(@person.strip, have.strip)
   end
 
   def test_load_from_yaml
-    want = <<~RUBY.strip
-      class Person
-        # @return [String]
-        attr_accessor :name
-        # Number of years the person has been alive.
-        # @return [Integer]
-        attr_accessor :age
-      end
-    RUBY
     have = Ginny::Class.create(Ginny.load_yaml(file_fixture("in/person.yml"))).render()
-    assert_equal(want, have)
+    assert_equal(@person, have)
   end
 
   # def test_yaml_with_multiline_string

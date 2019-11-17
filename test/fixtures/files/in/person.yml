@@ -1,8 +1,10 @@
 ---
-name: Person
+name: Human
+description: This class models a person.
+parent: Mammal
 attrs:
 - name: Name
   type: String
 - name: Age
-  description: Number of years the person has been alive.
+  description: Number of years the human has been alive.
   type: Integer
