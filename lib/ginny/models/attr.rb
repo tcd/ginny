@@ -1,19 +1,24 @@
 module Ginny
-  # Instance variables with getters/setters.
+  # Used to generate an instance variable with getters/setters.
   #
   # [attr]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr
   # [attr_accessor]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr_accessor
   # [attr_reader]: https://docs.ruby-lang.org/en/master/Module.html#method-i-attr_reader
   class Attr
+
+    # Name of the attribute.
     # @return [String]
     attr_accessor :name
+    # Description of the attribute. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
     # @return [String]
     attr_accessor :description
+    # [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute.
     # @return [String]
     attr_accessor :type
     # Default value for the attribute; set in it's Class's `initialize` function.
     # @return [String]
     attr_accessor :default
+    # If `true`, an `attr_reader` will be generated for the attribute instead of an `attr_accessor`.
     # @return [Boolean]
     attr_accessor :read_only
 
@@ -26,10 +31,10 @@ module Ginny
     # @return [Attr]
     def self.create(args = {})
       a = Ginny::Attr.new()
-      a.name = args[:name]
+      a.name        = args[:name]
       a.description = args[:description]
-      a.type = args[:type]
-      a.read_only = args[:read_only]
+      a.type        = args[:type]
+      a.read_only   = args[:read_only]
       return a
     end
 
@@ -61,5 +66,6 @@ module Ginny
       parts << "@return [#{self.type}]".indent(2).comment
       return parts.compact.join("\n")
     end
+
   end
 end

@@ -1,17 +1,22 @@
 module Ginny
-  # Methods ([1][1], [2][2])
+  # Used to generate a [method][2].
   #
   # [1]: https://ruby-doc.org/core-2.6.5/Method.html
   # [2]: https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html
   class Func
+
+    # Name of the function.
     # @return [String]
     attr_accessor :name
+    # Description of the function. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
     # @return [String]
     attr_accessor :description
+    # Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function.
     # @return [String]
     attr_accessor :return_type
     # @return [String]
     attr_accessor :body
+    # An array of {Ginny::Param}s.
     # @return [Array<Param>]
     attr_accessor :params
 
