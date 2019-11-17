@@ -1,3 +1,4 @@
+# Monkeypatch some convenience methods in to the String class.
 class String
 
   # Same as {indent}, except it indents the receiver in-place.

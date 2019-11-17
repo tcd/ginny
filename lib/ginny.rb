@@ -1,3 +1,4 @@
+# Ruby code generator.
 module Ginny
   QUOTE = '"'.freeze
 end

@@ -1,4 +1,5 @@
 module Ginny
+  # [Classes](https://ruby-doc.org/core-2.6.5/Class.html)
   class Class
     # @return [String]
     attr_accessor :name
@@ -51,5 +52,6 @@ module Ginny
       return nil unless self.attrs.length > 0
       return self.attrs.map(&:render).join("\n").indent(2)
     end
+
   end
 end

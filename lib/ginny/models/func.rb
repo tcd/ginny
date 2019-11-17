@@ -1,4 +1,8 @@
 module Ginny
+  # Methods ([1][1], [2][2])
+  #
+  # [1]: https://ruby-doc.org/core-2.6.5/Method.html
+  # [2]: https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html
   class Func
     # @return [String]
     attr_accessor :name
