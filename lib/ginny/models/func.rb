@@ -14,6 +14,7 @@ module Ginny
     # Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function.
     # @return [String]
     attr_accessor :return_type
+    # Ruby code to write into the body of the function.
     # @return [String]
     attr_accessor :body
     # An array of {Ginny::Param}s.
@@ -34,6 +35,7 @@ module Ginny
       f.name        = args[:name]
       f.description = args[:description]
       f.return_type = args[:return_type]
+      f.body        = args[:body]
       f.params      = Ginny::Param.from_array(args[:params]) if args[:params]&.is_a?(Array)
       return f
     end
@@ -46,17 +48,10 @@ module Ginny
       parts << self.params.map(&:render_doc).join("\n") unless self.params.length == 0
       parts << self.render_return_type()
       parts << "def " + self.name + self.render_params()
+      parts << self.body.indent(2) unless self.body.nil?
       parts << "end"
-      return parts.compact.join("\n")
+      return parts.compact.join("\n").gsub(/\s+$/, "")
     end
-
-    # # @return [String]
-    # def render_compact()
-    #   parts = []
-    #   parts << self.description
-    #   parts << "def #{self.name}(); end"
-    #   return parts.compact.join("\n")
-    # end
 
     # @return [String]
     def render_params()

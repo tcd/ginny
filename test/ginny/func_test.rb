@@ -101,4 +101,34 @@ class FuncTest < Minitest::Test
     assert_equal_and_print(want, have)
   end
 
+  def test_body
+    want = <<~RUBY.strip
+      # @return [void]
+      def initialize()
+        puts("Initialization in progress.")
+      end
+    RUBY
+    have = Ginny::Func.create(
+      name: "initialize",
+      body: 'puts("Initialization in progress.")',
+    ).render()
+    assert_equal(want, have)
+  end
+
+  def test_multiline_body
+    want = <<~RUBY.strip
+      # @return [void]
+      def initialize()
+        5.times do
+          puts("Initialization in progress.")
+        end
+      end
+    RUBY
+    have = Ginny::Func.create(
+      name: "initialize",
+      body: %(5.times do\n  puts("Initialization in progress.")\nend),
+    ).render()
+    assert_equal(want, have)
+  end
+
 end
