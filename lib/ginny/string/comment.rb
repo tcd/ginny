@@ -1,6 +1,5 @@
 # Monkeypatch some convenience methods in to the String class.
 class String
-
   # Adds a comment string (`"# "`) after every newline in a string.
   #
   # @param indent_empty_lines [Boolean]
