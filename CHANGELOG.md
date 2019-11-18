@@ -2,6 +2,12 @@
 
 ## master (unreleased)
 
+## 0.2.1 (2019-11-18)
+
+### Changed
+
+- Generate function body in `Ginny::Func.render`
+
 ## 0.2.0 (2019-11-17)
 
 ### Added
