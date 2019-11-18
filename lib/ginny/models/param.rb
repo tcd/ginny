@@ -64,7 +64,7 @@ module Ginny
       elsif default
         parts << (" = " + default)
       end
-      return parts.compact.join("")
+      return parts.compact.join("").gsub(/\s+$/, "")
     end
 
     # @return [String,nil]

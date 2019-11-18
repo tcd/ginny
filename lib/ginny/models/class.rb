@@ -49,7 +49,7 @@ module Ginny
       parts << (self.parent.nil? ? "class #{self.name}" : "class #{self.name} < #{self.parent}")
       parts << self.render_attributes()
       parts << "end"
-      return parts.compact.join("\n")
+      return parts.compact.join("\n").gsub(/\s+$/, "")
     end
 
     # @return [String]

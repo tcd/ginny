@@ -29,10 +29,10 @@ class GinnyTest < Minitest::Test
     assert_equal(@person, have)
   end
 
-  # def test_yaml_with_multiline_string
-  #   want = File.read(file_fixture("out/directive.rb"))
-  #   have = Ginny::Class.create(Ginny.load_yaml(file_fixture("in/directive.yml"))).render()
-  #   assert_equal(want, have)
-  # end
+  def test_yaml_with_multiline_string
+    want = File.read(file_fixture("out/directive.rb")).strip
+    have = Ginny::Class.create(Ginny.load_yaml(file_fixture("in/directive.yml"))).render()
+    assert_equal(want, have)
+  end
 
 end

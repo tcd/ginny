@@ -52,7 +52,7 @@ module Ginny
       parts << (@description&.length&.positive? ? @description.comment : nil)
       parts << "@return [#{self.type}]".comment
       parts << "attr_#{self.read_only ? 'reader' : 'accessor'} :#{self.name.downcase}"
-      return parts.compact.join("\n")
+      return parts.compact.join("\n").gsub(/\s+$/, "")
     end
 
     # Used for documenting attributes that are "declared dynamically via meta-programming".
@@ -66,7 +66,7 @@ module Ginny
       parts << "@!attribute #{self.name.downcase} [#{self.read_only ? 'r' : 'rw'}]".comment
       parts << (@description&.length&.positive? ? @description.indent(2).comment : nil)
       parts << "@return [#{self.type}]".indent(2).comment
-      return parts.compact.join("\n")
+      return parts.compact.join("\n").gsub(/\s+$/, "")
     end
 
   end
