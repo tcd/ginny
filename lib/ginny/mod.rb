@@ -18,7 +18,7 @@ module Ginny
   def self.mod(body, *names)
     names.flatten!
     count = names.length
-    return "" unless count.positive?()
+    return body unless count.positive?()
     level = 0
     head = []
     tail = []

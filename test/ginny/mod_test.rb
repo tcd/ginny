@@ -103,4 +103,15 @@ class ModTest < Minitest::Test
     assert_equal(want, have)
   end
 
+  def test_just_body
+    func = <<~RUBY.strip
+      def greet
+        puts('Hello World')
+      end
+    RUBY
+    want = func
+    have = Ginny.mod(func)
+    assert_equal(want, have)
+  end
+
 end
