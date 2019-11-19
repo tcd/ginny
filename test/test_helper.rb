@@ -43,7 +43,7 @@ module MiniTest::Assertions
     raise ArgumentError unless want.is_a?(String) && have.is_a?(String)
 
     clear = "\e[0m"
-    bold = "\e[1m"
+    _bold = "\e[1m"
     red = "\e[31m"
     green = "\e[32m"
 
