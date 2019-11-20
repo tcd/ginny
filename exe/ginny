@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-# require "optionparser"
 require "ginny"
 require "optparse"
 options = {}
@@ -20,7 +19,5 @@ end
 optparse.parse!
 
 ARGV.each do |f|
-  # puts "Resizing image #{f}..."
-  Ginny::Class.create(Ginny.load_yaml(f)).write_to_file(".")
-  sleep 0.5
+  Ginny::Class.create(Ginny.load_file(f)).write_to_file(".")
 end
