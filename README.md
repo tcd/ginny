@@ -86,43 +86,45 @@ end
 
 ### Class (`Ginny::Class`)
 
-|    Name     |         Type         |                          Description                           |
-| ----------- | -------------------- | -------------------------------------------------------------- |
-| name        | `String`             | Name of the class.                                             |
-| description | `String`             | Description of the class. [Markdown][markdown] is supported.   |
-| parent      | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`) |
-| attrs       | `Array<Ginny::Attr>` | An array of Attrs.                                             |
+|      Name       |         Type         |                          Description                           |
+| --------------- | -------------------- | -------------------------------------------------------------- |
+| name (required) | `String`             | Name of the class.                                             |
+| description     | `String`             | Description of the class. [Markdown][markdown] is supported.   |
+| parent          | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`) |
+| modules         | `Array<String>`      | List of modules to declare the class inside of                 |
+| attrs           | `Array<Ginny::Attr>` | An array of Attrs.                                             |
 
 ### Attribute (`Ginny::Attr`)
 
-|    Name     |   Type    |                                                       Description                                                        |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------ |
-| name        | `String`  | Name of the attribute.                                                                                                   |
-| description | `String`  | Description of the attribute. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported. |
-| type        | `String`  | [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute.                     |
-| default     | `Any`     | Default value for the attribute; set in it's Class's `initialize` function.                                              |
-| read_only   | `Boolean` | If `true`, an `attr_reader` will be generated for the attribute instead of an `attr_accessor`.                           |
+|      Name       |   Type    |                                                       Description                                                        |
+| --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------ |
+| name (required) | `String`  | Name of the attribute.                                                                                                   |
+| description     | `String`  | Description of the attribute. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported. |
+| type            | `String`  | [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute.                     |
+| default         | `Any`     | Default value for the attribute; set in it's Class's `initialize` function.                                              |
+| read_only       | `Boolean` | If `true`, an `attr_reader` will be generated for the attribute instead of an `attr_accessor`.                           |
 
 ### Function (`Ginny::Func`)
 
-|    Name     |         Type          |                                                Description                                                 |
-| ----------- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
-| name        | `String`              | Name of the function.                                                                                      |
-| description | `String`              | Description of the function. [Markdown][markdown] is supported.                                            |
-| return_type | `String`              | Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function. |
-| body        | `String`              |                                                                                                            |
-| params      | `Array<Ginny::Param>` | An array of Params.                                                                                        |
+|      Name       |         Type          |                                                Description                                                 |
+| --------------- | --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| name (required) | `String`              | Name of the function.                                                                                      |
+| description     | `String`              | Description of the function. [Markdown][markdown] is supported.                                            |
+| return_type     | `String`              | Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function. |
+| body            | `String`              | String to write into the body of the function.                                                             |
+| modules         | `Array<String>`       | List of modules to declare the function inside of                                                          |
+| params          | `Array<Ginny::Param>` | An array of Params.                                                                                        |
 
 ### Parameter (`Ginny::Param`)
 
-|    Name     |   Type    |                                                     Description                                                      |
-| ----------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
-| name        | `String`  | Name of the param.                                                                                                   |
-| description | `String`  | Description of the param. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported. |
-| type        | `String`  | [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the param.                     |
-| default     | `Any`  | Default value for the param. Set `optional` as `true` for a default `nil` value.                                     |
-| optional    | `Boolean` | If `true`, the default value will be `nil`.                                                                          |
-| keyword     | `Boolean` | If `true`, the param will be generated as a [keyword argument](https://bugs.ruby-lang.org/issues/14183).             |
+|      Name       |   Type    |                                                     Description                                                      |
+| --------------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| name (required) | `String`  | Name of the param.                                                                                                   |
+| description     | `String`  | Description of the param. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported. |
+| type            | `String`  | [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the param.                     |
+| default         | `Any`     | Default value for the param. Set `optional` as `true` for a default `nil` value.                                     |
+| optional        | `Boolean` | If `true`, the default value will be `nil`.                                                                          |
+| keyword         | `Boolean` | If `true`, the param will be generated as a [keyword argument](https://bugs.ruby-lang.org/issues/14183).             |
 
 ## Contributing
 

@@ -2,6 +2,11 @@
 
 ## master (unreleased)
 
+
+## 0.3.0 (2019-11-19)
+
+- Add the option to wrap generated code in modules.
+
 ## 0.2.1 (2019-11-18)
 
 ### Changed
