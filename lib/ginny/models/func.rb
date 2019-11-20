@@ -14,10 +14,10 @@ module Ginny
     # Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function.
     # @return [String]
     attr_accessor :return_type
-    # Ruby code to write into the body of the function.
+    # String to write into the body of the function.
     # @return [String]
     attr_accessor :body
-    # List of modules to declare the function inside.
+    # List of modules to declare the function inside of.
     # @return [String]
     attr_accessor :modules
     # An array of {Ginny::Param}s.
