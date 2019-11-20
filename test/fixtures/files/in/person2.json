@@ -1,0 +1,21 @@
+{
+  "name": "Human",
+  "description": "This class models a person.",
+  "parent": "Mammal",
+  "modules": [
+    "MilkyWay",
+    "Earth"
+  ],
+  "attrs": [
+    {
+      "name": "name",
+      "type": "String"
+    },
+    {
+      "name": "age",
+      "description": "Number of years the human has been alive.",
+      "type": "Integer",
+      "read_only": true
+    }
+  ]
+}

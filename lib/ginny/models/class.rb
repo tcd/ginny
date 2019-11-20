@@ -11,6 +11,9 @@ module Ginny
     # Name of a class to inherit from. (Ex: `YourNewClass < Parent`)
     # @return [String]
     attr_accessor :parent
+    # List of modules to declare the class inside.
+    # @return [String]
+    attr_accessor :modules
     # An array of {Ginny::Attr}s.
     # @return [Array<Ginny::Attr>]
     attr_accessor :attrs
@@ -18,6 +21,7 @@ module Ginny
     # @return [void]
     def initialize()
       self.attrs = []
+      self.modules = []
     end
 
     # Constructor for a Class. Use `create`, not `new`.
@@ -29,6 +33,7 @@ module Ginny
       c.name        = args[:name]
       c.description = args[:description]
       c.parent      = args[:parent]
+      c.modules     = args[:modules] unless args[:modules].nil?
       c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       return c
     end
@@ -49,6 +54,10 @@ module Ginny
       parts << (self.parent.nil? ? "class #{self.name}" : "class #{self.name} < #{self.parent}")
       parts << self.render_attributes()
       parts << "end"
+      if self.modules.length > 0
+        body = parts.compact.join("\n").gsub(/\s+$/, "")
+        return Ginny.mod(body, self.modules)
+      end
       return parts.compact.join("\n").gsub(/\s+$/, "")
     end
 

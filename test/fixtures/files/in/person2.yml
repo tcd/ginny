@@ -1,0 +1,12 @@
+---
+name: Human
+description: This class models a person.
+modules: [MilkyWay, Earth]
+parent: Mammal
+attrs:
+- name: Name
+  type: String
+- name: Age
+  description: Number of years the human has been alive.
+  type: Integer
+  read_only: true

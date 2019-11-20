@@ -1,0 +1,11 @@
+---
+name: greet
+description: Say hello.
+modules: [SomeModule]
+body: 'puts("Hello #{name}!")'
+params:
+- name: name
+  type: String
+  default: You
+
+

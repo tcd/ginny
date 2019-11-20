@@ -61,4 +61,23 @@ class ClassTest < Minitest::Test
     assert_equal(want.strip, have.strip)
   end
 
+  def test_class_with_in_module
+    want = <<~RUBY.strip
+      module MilkyWay
+        module Earth
+          # This class models a person.
+          class Human < Mammal
+            # @return [String]
+            attr_accessor :name
+            # Number of years the human has been alive.
+            # @return [Integer]
+            attr_reader :age
+          end
+        end
+      end
+    RUBY
+    have = Ginny::Class.create(Ginny.load_file(file_fixture("in/person2.yml"))).render()
+    assert_equal(want.strip, have.strip)
+  end
+
 end

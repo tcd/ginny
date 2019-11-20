@@ -17,6 +17,9 @@ module Ginny
     # Ruby code to write into the body of the function.
     # @return [String]
     attr_accessor :body
+    # List of modules to declare the function inside.
+    # @return [String]
+    attr_accessor :modules
     # An array of {Ginny::Param}s.
     # @return [Array<Param>]
     attr_accessor :params
@@ -24,6 +27,7 @@ module Ginny
     # @return [void]
     def initialize()
       self.params = []
+      self.modules = []
     end
 
     # Constructor for a Func. Use `create`, not `new`.
@@ -36,6 +40,7 @@ module Ginny
       f.description = args[:description]
       f.return_type = args[:return_type]
       f.body        = args[:body]
+      f.modules     = args[:modules] unless args[:modules].nil?
       f.params      = Ginny::Param.from_array(args[:params]) if args[:params]&.is_a?(Array)
       return f
     end
@@ -50,7 +55,11 @@ module Ginny
       parts << "def " + self.name + self.render_params()
       parts << self.body.indent(2) unless self.body.nil?
       parts << "end"
-      return parts.compact.join("\n").gsub(/\s+$/, "")
+
+      body = parts.compact.join("\n").gsub(/\s+$/, "")
+
+      return Ginny.mod(body, self.modules) if self.modules.length > 0
+      return body
     end
 
     # @return [String]

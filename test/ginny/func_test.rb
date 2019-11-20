@@ -131,4 +131,19 @@ class FuncTest < Minitest::Test
     assert_equal(want, have)
   end
 
+  def test_func_in_module_from_file
+    want = <<~'RUBY'.strip
+      module SomeModule
+        # Say hello.
+        # @param name [String]
+        # @return [void]
+        def greet(name = "You")
+          puts("Hello #{name}!")
+        end
+      end
+    RUBY
+    have = Ginny::Func.create(Ginny.load_file(file_fixture("in/hello.func.yaml"))).render()
+    assert_equal(want, have)
+  end
+
 end
