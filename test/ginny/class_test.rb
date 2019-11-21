@@ -80,4 +80,51 @@ class ClassTest < Minitest::Test
     assert_equal(want.strip, have.strip)
   end
 
+  def test_class_with_body
+    want = <<~RUBY.strip
+      module C4
+        module Elements
+          # - Id: 112
+          # - Name: Pier Name
+          # - Type: AN
+          # - Min/Max: 2/14
+          # - Description: Free-form name of the pier.
+          class PierName < C4::Element::AN
+            # @return [void]
+            def initialize()
+              @id = 112
+              @name = "Pier Name"
+              @type = "AN"
+              self.min = 2
+              self.max = 14
+            end
+          end
+        end
+      end
+    RUBY
+    have = Ginny::Class.create(
+      name: "PierName",
+      parent: "C4::Element::AN",
+      modules: ["C4", "Elements"],
+      description: <<~STRING.strip,
+        - Id: 112
+        - Name: Pier Name
+        - Type: AN
+        - Min/Max: 2/14
+        - Description: Free-form name of the pier.
+      STRING
+      body: <<~RUBY.strip,
+        # @return [void]
+        def initialize()
+          @id = 112
+          @name = "Pier Name"
+          @type = "AN"
+          self.min = 2
+          self.max = 14
+        end
+      RUBY
+    ).render()
+    assert_equal(want.strip, have.strip)
+  end
+
 end

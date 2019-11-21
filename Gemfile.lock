@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ginny (0.3.0)
+    ginny (0.4.0)
 
 GEM
   remote: https://rubygems.org/

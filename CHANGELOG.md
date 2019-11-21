@@ -3,7 +3,15 @@
 ## master (unreleased)
 
 
+## 0.4.0 (2019-11-21)
+
+### Added
+
+- Add `body` argument to `Ginny::Class` for code to be generated in the class body.
+
 ## 0.3.0 (2019-11-21)
+
+### Added
 
 - Add the option to wrap generated code in modules.
 

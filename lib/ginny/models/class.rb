@@ -17,6 +17,9 @@ module Ginny
     # An array of {Ginny::Attr}s.
     # @return [Array<Ginny::Attr>]
     attr_accessor :attrs
+    # String to write into the body of the class.
+    # @return [String]
+    attr_accessor :body
 
     # @return [void]
     def initialize()
@@ -35,6 +38,7 @@ module Ginny
       c.parent      = args[:parent]
       c.modules     = args[:modules] unless args[:modules].nil?
       c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
+      c.body        = args[:body] unless args[:body].nil?
       return c
     end
 
@@ -53,6 +57,7 @@ module Ginny
       parts << (self.description&.length&.positive? ? self.description.comment.strip : nil)
       parts << (self.parent.nil? ? "class #{self.name}" : "class #{self.name} < #{self.parent}")
       parts << self.render_attributes()
+      parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
       parts << "end"
       if self.modules.length > 0
         body = parts.compact.join("\n").gsub(/\s+$/, "")

@@ -101,6 +101,7 @@ end
 | --------------- | -------------------- | -------------------------------------------------------------- |
 | name (required) | `String`             | Name of the class.                                             |
 | description     | `String`             | Description of the class. [Markdown][markdown] is supported.   |
+| body            | `String`             | String to write into the body of the class.                    |
 | parent          | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`) |
 | modules         | `Array<String>`      | List of modules to declare the class inside of                 |
 | attrs           | `Array<Ginny::Attr>` | An array of Attrs.                                             |
