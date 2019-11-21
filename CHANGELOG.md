@@ -3,7 +3,7 @@
 ## master (unreleased)
 
 
-## 0.3.0 (2019-11-19)
+## 0.3.0 (2019-11-21)
 
 - Add the option to wrap generated code in modules.
 
