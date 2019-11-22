@@ -47,7 +47,7 @@ module Ginny
     def generate(folder = ".")
       name = self.name.downcase + ".rb"
       path = File.join(File.expand_path(folder), name)
-      File.open(path, "a") { |f| f.write(self.render()) }
+      File.open(path, "a") { |f| f.write(self.render() + "\n") }
       return path
     end
 
