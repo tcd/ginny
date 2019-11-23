@@ -2,6 +2,9 @@
 
 ## master (unreleased)
 
+### Changed
+
+- Add [dry-rb/dry-inflector](https://github.com/dry-rb/dry-inflector) dependency.
 
 ## 0.4.0 (2019-11-21)
 

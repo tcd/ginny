@@ -1,3 +1,5 @@
+require "dry/inflector"
+
 module Ginny
   # Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html)
   class Class
@@ -20,11 +22,15 @@ module Ginny
     # String to write into the body of the class.
     # @return [String]
     attr_accessor :body
+    # String to prepend to the name of the generated file.
+    # @return [String]
+    attr_accessor :file_prefix
 
     # @return [void]
     def initialize()
       self.attrs = []
       self.modules = []
+      self.file_prefix = ""
     end
 
     # Constructor for a Class. Use `create`, not `new`.
@@ -39,14 +45,14 @@ module Ginny
       c.modules     = args[:modules] unless args[:modules].nil?
       c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       c.body        = args[:body] unless args[:body].nil?
+      c.file_prefix = args[:file_prefix] || ""
       return c
     end
 
     # @param folder [String]
     # @return [String]
     def generate(folder = ".")
-      name = self.name.downcase + ".rb"
-      path = File.join(File.expand_path(folder), name)
+      path = File.join(File.expand_path(folder), self.file_name())
       File.open(path, "a") { |f| f.write(self.render() + "\n") }
       return path
     end
@@ -55,7 +61,7 @@ module Ginny
     def render()
       parts = []
       parts << (self.description&.length&.positive? ? self.description.comment.strip : nil)
-      parts << (self.parent.nil? ? "class #{self.name}" : "class #{self.name} < #{self.parent}")
+      parts << (self.parent.nil? ? "class #{self.class_name()}" : "class #{self.class_name()} < #{self.parent}")
       parts << self.render_attributes()
       parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
       parts << "end"
@@ -70,6 +76,18 @@ module Ginny
     def render_attributes()
       return nil unless self.attrs.length > 0
       return self.attrs.map(&:render).join("\n").indent(2)
+    end
+
+    # @return [String]
+    def class_name()
+      inflector = Dry::Inflector.new
+      return inflector.classify(inflector.underscore(self.name))
+    end
+
+    # @return [String]
+    def file_name()
+      inflector = Dry::Inflector.new
+      return self.file_prefix + inflector.underscore(self.name) + ".rb"
     end
 
   end
