@@ -5,6 +5,7 @@
 ### Changed
 
 - Add [dry-rb/dry-inflector](https://github.com/dry-rb/dry-inflector) dependency.
+- Add `file_prefix` argument to `Ginny::Class` for String to prepend to the name of the generated file.
 
 ## 0.4.0 (2019-11-21)
 
