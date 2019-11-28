@@ -1,15 +1,17 @@
 # Ginny
 
+[![Gem](https://img.shields.io/gem/v/ginny)][rubygems]
+[![Build Status](https://travis-ci.org/tcd/ginny.svg?branch=master)][travis-ci]
+[![Coverage Status](https://coveralls.io/repos/github/tcd/ginny/badge.svg?branch=master)][coveralls-ci]
+[![Documentation](http://img.shields.io/badge/docs-rubydoc.info-blue.svg)][rubydoc-gem]
+[![GitHub](https://img.shields.io/github/license/tcd/ginny)][license]
 
-[![Build Status](https://travis-ci.org/tcd/gql.svg?branch=master)](https://travis-ci.org/tcd/gql)
-[![Coverage Status](https://coveralls.io/repos/github/tcd/ginny/badge.svg?branch=master)](https://coveralls.io/github/tcd/ginny?branch=master)
-[![Documentation](http://img.shields.io/badge/docs-rubydoc.org-blue.svg)](https://rubydoc.org/github/tcd/ginny/master)
-[![GitHub](https://img.shields.io/github/license/tcd/ginny)](https://github.com/tcd/ginny/blob/master/LICENSE.txt)
+[rubygems]: https://rubygems.org/gems/ginny
+[travis-ci]: https://travis-ci.org/tcd/ginny
+[coveralls-ci]: https://coveralls.io/github/tcd/ginny?branch=master
+[rubydoc-gem]: https://www.rubydoc.info/gems/ginny/0.5.0
+[license]: https://github.com/tcd/ginny/blob/master/LICENSE.txt
 
-[![Gem](https://img.shields.io/gem/v/ginny)](https://rubygems.org/gems/ginny) [[1]][gem link 1] [[2]][gem link 2]
-
-[gem link 1]: https://help.rubygems.org/discussions/problems/37131-gem-push-name-too-close-to-typo-protected-gem
-[gem link 2]: https://github.com/rubygems/rubygems.org/issues/2058
 
 ## Installation
 
