@@ -1,11 +1,25 @@
 # Changelog
 
-## master (unreleased)
+<!-- ## master (unreleased) -->
 
-### Changed
+## 0.5.0 (2019-11-28)
+
+### Added
 
 - Add [dry-rb/dry-inflector](https://github.com/dry-rb/dry-inflector) dependency.
 - Add `file_prefix` argument to `Ginny::Class` for String to prepend to the name of the generated file.
+
+### Changed 
+
+- Update *description* and *documentation_uri* in gemspec.
+
+### Fixed
+
+- Fix doc comment in `Ginny.symbolize_keys` that was causing `yard gems` to give this warning:
+    ```
+    [warn]: @param tag has unknown parameter name: obj 
+        in file `lib/food_truck/symbolize.rb' near line 10
+    ```
 
 ## 0.4.0 (2019-11-21)
 
@@ -32,7 +46,7 @@
 - Generate Functions with Yard doc comments. (`Ginny::Func`)
 - Generate Function Parameters. (`Ginny::Param`)
 - Add support for generating classes with inheritance.
-- Add `ginny` executable (WIP).
+- Add `food_truck` executable (WIP).
 
 ### Changed
 

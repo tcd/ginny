@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "homepage_uri" => spec.homepage,
     "source_code_uri" => spec.homepage,
+    "documentation_uri" => "https://www.rubydoc.info/gems/ginny/#{spec.version}",
     "changelog_uri" => "https://github.com/tcd/ginny/blob/master/CHANGELOG.md",
     "yard.run" => "yri", # use "yard" to build full HTML docs.
   }

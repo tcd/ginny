@@ -5,7 +5,7 @@ module Ginny
   # - [original code](https://avdi.codes/recursively-symbolize-keys/)
   # - [array support](https://gist.github.com/neektza/8585746)
   #
-  # @param obj [Hash,Array]
+  # @param arg [Hash,Array]
   # @return [Hash,Array]
   def self.symbolize_keys(arg)
     if arg.is_a?(Hash)
