@@ -4,6 +4,10 @@
 
 ## 0.5.1 (2019-12-03)
 
+### Added
+
+- JSON Schema definition for Ginny definition files.
+
 ### Changed 
 
 - Update badges in readme.

@@ -1,0 +1,107 @@
+---
+"$id": https://github.com/tcd/ginny/blob/master/schema/ginny.json
+"$schema": http://json-schema.org/draft-07/schema#
+title: Files used by `Ginny` to generate ruby code.
+type: object
+
+definitions:
+
+  class:
+    description: Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html).
+    type: object
+    required: [name]
+    properties:
+      name:
+        description: Name of the class.
+        type: string
+      description:
+        description: Description of the class. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
+        type: string
+      parent:
+        description: "Name of a class to inherit from. (Ex: `YourNewClass < Parent`)"
+        type: string
+      modules:
+        description: List of modules to declare the class inside.
+        type: string
+      attrs:
+        description: An array of `Ginny::Attr`s.
+        type: array
+        items:
+          "$ref": "#/definitions/attr"
+      body:
+        description: String to write into the body of the class.
+        type: string
+      file_prefix:
+        description: String to prepend to the name of the generated file.
+        type: string
+
+  attr:
+    description: Used to generate an instance variable with getters/setters.
+    type: object
+    required: [name]
+    properties:
+      name:
+        description: Name of the attribute.
+        type: string
+      description:
+        description: Description of the attribute. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
+        type: string
+      type:
+        description: "[Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute."
+        type: string
+      default:
+        description: Default value for the attribute; set in it's Class's `initialize` function.
+        type: string
+      read_only:
+        description: If `true`, an `attr_reader` will be generated for the attribute instead of an `attr_accessor`.
+        type: boolean
+
+  func:
+    description: Used to generate a [method](https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html).
+    type: object
+    required: [name]
+    properties:
+      name:
+        description: Name of the function.
+        type: string
+      description:
+        description: Description of the function. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
+        type: string
+      return_type:
+        description: Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function.
+        type: string
+      body:
+        description: String to write into the body of the function.
+        type: string
+      modules:
+        description: List of modules to declare the function inside of.
+        type: string
+      params:
+        description: An array of `Ginny::Param`s.
+        type: array
+        items:
+          "$ref": "#/definitions/param"
+
+  param:
+    description: Used to generate a function [parameter](https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html#label-Arguments).
+    type: object
+    required: [name]
+    properties:
+      name:
+        description: Name of the param.
+        type: string
+      description:
+        description: Description of the param. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
+        type: string
+      type:
+        description: "[Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the param."
+        type: string
+      default:
+        description: Default value for the Param. Set `optional` as `true` for a default `nil` value.
+        type: string
+      optional:
+        description: If `true`, the default value will be `nil`.
+        type: boolean
+      keyword:
+        description: If `true`, the param will be generated as a [keyword argument](https://bugs.ruby-lang.org/issues/14183).
+        type: boolean
