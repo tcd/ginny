@@ -11,10 +11,10 @@ module Ginny
     # Description of the param. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
     # @return [String]
     attr_accessor :description
-    # [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute.
+    # [Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the param.
     # @return [String]
     attr_accessor :type
-    # Default value for the Param.
+    # Default value for the param.
     # Set `optional` as `true` for a default `nil` value.
     # @return [String]
     attr_accessor :default

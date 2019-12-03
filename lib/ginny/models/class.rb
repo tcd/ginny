@@ -1,7 +1,7 @@
 require "dry/inflector"
 
 module Ginny
-  # Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html)
+  # Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html).
   class Class
 
     # Name of the class.
