@@ -39,5 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "simplecov"
 
+  spec.add_runtime_dependency "coolkit", "~> 0.2.2"
   spec.add_runtime_dependency "dry-inflector", "~> 0.2.0"
 end

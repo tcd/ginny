@@ -1,10 +1,14 @@
 # Changelog
 
-## master (unreleased)
+<!-- ## master (unreleased) -->
+
+## 0.5.1 (2019-12-03)
 
 ### Changed 
 
 - Update badges in readme.
+- Add [tcd/coolkit](https://github.com/tcd/coolkit) dependency.
+    - Extracted `String.indent`, `String.comment`, and `symbolize_keys` into their own gem for reuse.
 
 ## 0.5.0 (2019-11-28)
 

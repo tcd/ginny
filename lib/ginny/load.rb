@@ -9,7 +9,7 @@ module Ginny
   # @param path [String]
   # @return [Hash<Symbol>]
   def self.load_yaml(path)
-    return Ginny.symbolize_keys(YAML.load_file(File.expand_path(path)))
+    return Coolkit.symbolize_keys(YAML.load_file(File.expand_path(path)))
   end
 
   # Load data from a JSON file.

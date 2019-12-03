@@ -1,3 +1,5 @@
+require "coolkit"
+
 # Ruby code generator.
 module Ginny
   QUOTE = '"'.freeze
