@@ -2,6 +2,17 @@
 
 <!-- ## master (unreleased) -->
 
+## 0.5.2 (2019-12-09)
+
+### Added
+
+- Improved doc comments for various functions.
+- Add `Ginny::INDENT` constant.
+
+### Changed
+
+- Make sure not to remove newlines when trimming trailing whitespace before calls to render.
+
 ## 0.5.1 (2019-12-03)
 
 ### Added

@@ -45,6 +45,8 @@ module Ginny
       return f
     end
 
+    # Return generated code as a string.
+    #
     # @return [String]
     def render()
       # return self.render_compact() if self.body.nil? && self.params.length == 0
@@ -56,7 +58,7 @@ module Ginny
       parts << self.body.indent(2) unless self.body.nil?
       parts << "end"
 
-      body = parts.compact.join("\n").gsub(/\s+$/, "")
+      body = parts.compact.join("\n").gsub(/(\s+)$/, "")
 
       return Ginny.mod(body, self.modules) if self.modules.length > 0
       return body

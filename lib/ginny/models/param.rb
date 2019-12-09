@@ -53,6 +53,8 @@ module Ginny
       return array.map { |p| self.create(p) }
     end
 
+    # Return generated code as a string.
+    #
     # @return [String]
     def render
       parts = []
