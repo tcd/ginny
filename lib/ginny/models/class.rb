@@ -84,13 +84,19 @@ module Ginny
 
     # @return [String]
     def class_name()
-      inflector = Dry::Inflector.new
+      inflector = Dry::Inflector.new do |inflections|
+        inflections.plural("data", "data")
+        inflections.singular(/([t])a\z/i, '\1a')
+      end
       return inflector.classify(inflector.underscore(self.name))
     end
 
     # @return [String]
     def file_name()
-      inflector = Dry::Inflector.new
+      inflector = Dry::Inflector.new do |inflections|
+        inflections.plural("data", "data")
+        inflections.singular(/([t])a\z/i, '\1a')
+      end
       return self.file_prefix + inflector.underscore(self.name) + ".rb"
     end
 
