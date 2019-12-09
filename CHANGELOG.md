@@ -2,6 +2,12 @@
 
 <!-- ## master (unreleased) -->
 
+## 0.5.3 (2019-12-09)
+
+### Changed
+
+- Modify inflections for `data`.
+
 ## 0.5.2 (2019-12-09)
 
 ### Added
