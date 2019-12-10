@@ -70,10 +70,10 @@ module Ginny
       parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
       parts << "end"
       if self.modules.length > 0
-        body = parts.compact.join("\n").gsub(/(\s+)$/, "")
+        body = parts.compact.join("\n").gsub(/([[:blank:]]+)$/, "")
         return Ginny.mod(body, self.modules)
       end
-      return parts.compact.join("\n").gsub(/(\s+)$/, "")
+      return parts.compact.join("\n").gsub(/([[:blank:]]+)$/, "")
     end
 
     # @return [String]

@@ -127,4 +127,48 @@ class ClassTest < Minitest::Test
     assert_equal(want.strip, have.strip)
   end
 
+  def test_preserving_newlines
+    want = <<~RUBY.strip
+      module Eddy
+        module Elements
+          class SecurityInformationQualifier < Eddy::Element::ID
+            # @return [void]
+            def initialize()
+              @id = "I03"
+            end
+
+            # @return [Array<String>]
+            def code_list()
+              return [
+                "00",
+                "01"
+              ]
+            end
+          end
+        end
+      end
+    RUBY
+    constructor = Ginny::Func.create({
+      name: "initialize",
+      body: '@id = "I03"',
+    }).render()
+    code_list = Ginny::Func.create({
+      name: "code_list",
+      return_type: "Array<String>",
+      body: <<~FUNC_BODY,
+        return [
+          "00",
+          "01"
+        ]
+      FUNC_BODY
+    }).render()
+    have = Ginny::Class.create({
+      name: "SecurityInformationQualifier",
+      parent: "Eddy::Element::ID",
+      modules: ["Eddy", "Elements"],
+      body: constructor + "\n\n" + code_list,
+    }).render()
+    assert_equal(want, have)
+  end
+
 end
