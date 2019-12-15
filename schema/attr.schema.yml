@@ -1,0 +1,23 @@
+---
+"$id": https://raw.githubusercontent.com/tcd/ginny/master/schema/attr.schema.json
+"$schema": http://json-schema.org/draft-07/schema#
+title: Ginny Attr Definition
+description: Used to generate an instance variable with getters/setters.
+type: object
+required: [name]
+properties:
+  default:
+    description: Default value for the attribute; set in it's Class's `initialize` function.
+    type: string
+  description:
+    description: Description of the attribute. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.
+    type: string
+  name:
+    description: Name of the attribute.
+    type: string
+  read_only:
+    description: If `true`, an `attr_reader` will be generated for the attribute instead of an `attr_accessor`.
+    type: boolean
+  type:
+    description: "[Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the attribute."
+    type: string

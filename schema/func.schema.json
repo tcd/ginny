@@ -1,0 +1,39 @@
+{
+  "$id": "https://raw.githubusercontent.com/tcd/ginny/master/schema/func.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ginny Func Definition",
+  "description": "Used to generate a [method](https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html).",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "body": {
+      "description": "String to write into the body of the function.",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the function. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.",
+      "type": "string"
+    },
+    "modules": {
+      "description": "List of modules to declare the function inside of.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the function.",
+      "type": "string"
+    },
+    "params": {
+      "description": "An array of `Ginny::Param`s.",
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/tcd/ginny/master/schema/param.schema.json"
+      }
+    },
+    "return_type": {
+      "description": "Return [type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the function.",
+      "type": "string"
+    }
+  }
+}

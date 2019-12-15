@@ -1,0 +1,36 @@
+{
+  "$id": "https://raw.githubusercontent.com/tcd/ginny/master/schema/param.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ginny Param Definition",
+  "description": "Used to generate a function [parameter](https://ruby-doc.org/core-2.6.5/doc/syntax/methods_rdoc.html#label-Arguments).",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name of the param.",
+      "type": "string"
+    },
+    "description": {
+      "description": "Description of the param. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.",
+      "type": "string"
+    },
+    "type": {
+      "description": "[Type](https://rubydoc.info/gems/yard/file/docs/GettingStarted.md#Declaring_Types) of the param.",
+      "type": "string"
+    },
+    "default": {
+      "description": "Default value for the Param. Set `optional` as `true` for a default `nil` value.",
+      "type": "string"
+    },
+    "optional": {
+      "description": "If `true`, the default value will be `nil`.",
+      "type": "boolean"
+    },
+    "keyword": {
+      "description": "If `true`, the param will be generated as a [keyword argument](https://bugs.ruby-lang.org/issues/14183).",
+      "type": "boolean"
+    }
+  }
+}

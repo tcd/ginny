@@ -1,6 +1,10 @@
 # Changelog
 
-<!-- ## master (unreleased) -->
+## master (unreleased)
+
+### Fixed
+
+- Updated JSON schemas.
 
 ## 0.6.1 (2019-12-14)
 

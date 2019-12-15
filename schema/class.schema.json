@@ -1,0 +1,47 @@
+{
+  "$id": "https://raw.githubusercontent.com/tcd/ginny/master/schema/class.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ginny Class Definition",
+  "description": "Used to generate a [class](https://ruby-doc.org/core-2.6.5/Class.html).",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "attrs": {
+      "description": "An array of `Ginny::Attr`s.",
+      "type": "array",
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/tcd/ginny/master/schema/attr.schema.json"
+      }
+    },
+    "body": {
+      "description": "String to write into the body of the class.",
+      "type": "string"
+    },
+    "default_constructor": {
+      "description": "If `true`, a method similar to [ActiveRecord::Base.create](https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create) will be generated for the class.",
+      "type": "boolean"
+    },
+    "description": {
+      "description": "Description of the class. [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is supported.",
+      "type": "string"
+    },
+    "file_prefix": {
+      "description": "String to prepend to the name of the generated file.",
+      "type": "string"
+    },
+    "modules": {
+      "description": "List of modules to declare the class inside.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the class.",
+      "type": "string"
+    },
+    "parent": {
+      "description": "Name of a class to inherit from. (Ex: `YourNewClass < Parent`)",
+      "type": "string"
+    }
+  }
+}
