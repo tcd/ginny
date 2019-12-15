@@ -44,6 +44,7 @@ name: Human
 description: This class models a person.
 modules: [MilkyWay, Earth]
 parent: Mammal
+default_constructor: true
 attrs:
 - name: Name
   type: String
@@ -51,7 +52,6 @@ attrs:
   description: Number of years the human has been alive.
   type: Integer
   read_only: true
-
 ```
 
 ```shell
@@ -68,6 +68,7 @@ data = {
   description: "This class models a person.",
   modules: ["MilkyWay", "Earth"],
   parent: "Mammal",
+  default_constructor: true,
   attrs: [
     { name: "name", type: "String" },
     { name: "age",  type: "Integer" read_only: true, description: "Number of years the human has been alive." },
@@ -90,6 +91,15 @@ module MilkyWay
       # Number of years the human has been alive.
       # @return [Integer]
       attr_reader :age
+
+      # @param params [Hash]
+      # @return [self]
+      def self.create(params = {})
+        h = Human.new
+        h.name = params[:name]
+        h.age = params[:age]
+        return h
+      end
     end
   end
 end
@@ -99,14 +109,17 @@ end
 
 ### `Ginny::Class`
 
-|      Name       |         Type         |                          Description                           |
-| --------------- | -------------------- | -------------------------------------------------------------- |
-| name (required) | `String`             | Name of the class.                                             |
-| description     | `String`             | Description of the class. [Markdown][markdown] is supported.   |
-| body            | `String`             | String to write into the body of the class.                    |
-| parent          | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`) |
-| modules         | `Array<String>`      | List of modules to declare the class inside of                 |
-| attrs           | `Array<Ginny::Attr>` | An array of Attrs.                                             |
+|        Name         |         Type         |                                                   Description                                                   |
+| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------- |
+| name (required)     | `String`             | Name of the class.                                                                                              |
+| description         | `String`             | Description of the class. [Markdown][markdown] is supported.                                                    |
+| body                | `String`             | String to write into the body of the class.                                                                     |
+| parent              | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`)                                                  |
+| modules             | `Array<String>`      | List of modules to declare the class inside of                                                                  |
+| default_constructor | `Boolean`            | If `true`, a method similar to [ActiveRecord::Base.create][create_method_link] will be generated for the class. |
+| attrs               | `Array<Ginny::Attr>` | An array of Attrs.                                                                                              |
+
+[create_method_link][https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create]
 
 ### `Ginny::Attr`
 

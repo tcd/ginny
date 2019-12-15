@@ -20,10 +20,10 @@ module Ginny
     attr_accessor :default
     # If `true`, the default value will be `nil`.
     # FIXME: This is a workaround for the fact that that passing `nil` to `default` messes with conditionals. Not sure of a simpler way to do this.
-    # @return [Boolean]
+    # @return [Boolean] (false)
     attr_accessor :optional
     # If `true`, the param will be generated as a [keyword argument](https://bugs.ruby-lang.org/issues/14183).
-    # @return [Boolean]
+    # @return [Boolean] (false)
     attr_accessor :keyword
 
     # Constructor for a Param. Use `create`, not `new`.

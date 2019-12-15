@@ -2,6 +2,14 @@
 
 <!-- ## master (unreleased) -->
 
+## 0.6.0 (2019-12-14)
+
+### Added
+
+- Add `default_constructor` option for `Ginny::Class`, which will generate a method similar to [ActiveRecord::Base.create][create_method_link] for the class.
+
+[create_method_link][https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create]
+
 ## 0.5.4 (2019-12-09)
 
 ### Changed
@@ -42,7 +50,7 @@
 ### Added
 
 - Add [dry-rb/dry-inflector](https://github.com/dry-rb/dry-inflector) dependency.
-- Add `file_prefix` argument to `Ginny::Class` for String to prepend to the name of the generated file.
+- Add `file_prefix` option to `Ginny::Class` for a string to prepend to the name of the generated file.
 
 ### Changed 
 

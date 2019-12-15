@@ -3,20 +3,20 @@ require "test_helper"
 class ClassTest < Minitest::Test
 
   def test_empty_class_with_no_description
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       class Example
       end
-    RUBY
+    RB
     have = Ginny::Class.create(name: "Example").render()
     assert_equal_and_print(want, have)
   end
 
   def test_empty_class_with_description
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       # This is just an example.
       class Example
       end
-    RUBY
+    RB
     have = Ginny::Class.create(
       name: "Example",
       description: "This is just an example.",
@@ -25,11 +25,11 @@ class ClassTest < Minitest::Test
   end
 
   def test_empty_class_with_parent
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       # This example is object-oriented.
       class Example < Parent
       end
-    RUBY
+    RB
     have = Ginny::Class.create(
       name: "Example",
       description: "This example is object-oriented.",
@@ -39,7 +39,7 @@ class ClassTest < Minitest::Test
   end
 
   def test_class_with_attributes
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       # This class models a person.
       class Human < Mammal
         # @return [String]
@@ -48,7 +48,7 @@ class ClassTest < Minitest::Test
         # @return [Integer]
         attr_accessor :age
       end
-    RUBY
+    RB
     have = Ginny::Class.create(
       name: "Human",
       description: "This class models a person.",
@@ -58,11 +58,103 @@ class ClassTest < Minitest::Test
         { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
       ],
     ).render()
-    assert_equal(want.strip, have.strip)
+    assert_equal(want, have.strip)
+  end
+
+  def test_default_constructor_1
+    want = <<~RB.indent(2).strip
+      # @param params [Hash]
+      # @return [self]
+      def self.create(params = {})
+        h = Human.new
+        h.name = params[:name]
+        h.age = params[:age]
+        return h
+      end
+    RB
+    g_class = Ginny::Class.create(
+      name: "Human",
+      default_constructor: true,
+      attrs: [
+        { name: "name", type: "String" },
+        { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
+      ],
+    )
+    have = g_class.render_body()
+    assert_equal_and_print(want, have.strip)
+  end
+
+  def test_default_constructor_with_body
+    want = <<~RB.strip
+      # This class models a person.
+      class Human < Mammal
+        # @return [String]
+        attr_accessor :name
+        # Number of years the human has been alive.
+        # @return [Integer]
+        attr_accessor :age
+
+        # @param params [Hash]
+        # @return [self]
+        def self.create(params = {})
+          h = Human.new
+          h.name = params[:name]
+          h.age = params[:age]
+          return h
+        end
+
+        puts('idk man')
+      end
+    RB
+    have = Ginny::Class.create(
+      name: "Human",
+      description: "This class models a person.",
+      parent: "Mammal",
+      default_constructor: true,
+      body: "puts('idk man')",
+      attrs: [
+        { name: "name", type: "String" },
+        { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
+      ],
+    ).render()
+    assert_equal_and_print(want, have.strip)
+  end
+
+  def test_default_constructor_without_body
+    want = <<~RB.strip
+      # This class models a person.
+      class Human < Mammal
+        # @return [String]
+        attr_accessor :name
+        # Number of years the human has been alive.
+        # @return [Integer]
+        attr_accessor :age
+
+        # @param params [Hash]
+        # @return [self]
+        def self.create(params = {})
+          h = Human.new
+          h.name = params[:name]
+          h.age = params[:age]
+          return h
+        end
+      end
+    RB
+    have = Ginny::Class.create(
+      name: "Human",
+      description: "This class models a person.",
+      parent: "Mammal",
+      default_constructor: true,
+      attrs: [
+        { name: "name", type: "String" },
+        { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
+      ],
+    ).render()
+    assert_equal_and_print(want, have.strip)
   end
 
   def test_class_with_in_module
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       module MilkyWay
         module Earth
           # This class models a person.
@@ -75,13 +167,13 @@ class ClassTest < Minitest::Test
           end
         end
       end
-    RUBY
+    RB
     have = Ginny::Class.create(Ginny.load_file(file_fixture("in/person2.yml"))).render()
-    assert_equal(want.strip, have.strip)
+    assert_equal(want, have.strip)
   end
 
   def test_class_with_body
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       module C4
         module Elements
           # - Id: 112
@@ -101,7 +193,7 @@ class ClassTest < Minitest::Test
           end
         end
       end
-    RUBY
+    RB
     have = Ginny::Class.create(
       name: "PierName",
       parent: "C4::Element::AN",
@@ -113,7 +205,7 @@ class ClassTest < Minitest::Test
         - Min/Max: 2/14
         - Description: Free-form name of the pier.
       STRING
-      body: <<~RUBY.strip,
+      body: <<~RB.strip,
         # @return [void]
         def initialize()
           @id = 112
@@ -122,13 +214,13 @@ class ClassTest < Minitest::Test
           self.min = 2
           self.max = 14
         end
-      RUBY
+      RB
     ).render()
-    assert_equal(want.strip, have.strip)
+    assert_equal(want, have.strip)
   end
 
   def test_preserving_newlines
-    want = <<~RUBY.strip
+    want = <<~RB.strip
       module Eddy
         module Elements
           class SecurityInformationQualifier < Eddy::Element::ID
@@ -147,7 +239,7 @@ class ClassTest < Minitest::Test
           end
         end
       end
-    RUBY
+    RB
     constructor = Ginny::Func.create({
       name: "initialize",
       body: '@id = "I03"',

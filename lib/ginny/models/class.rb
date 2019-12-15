@@ -22,6 +22,9 @@ module Ginny
     # String to write into the body of the class.
     # @return [String]
     attr_accessor :body
+    # If `true`, a method similar to [ActiveRecord::Base.create](https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create) will be generated for the class.
+    # @return [Boolean]
+    attr_accessor :default_constructor
     # String to prepend to the name of the generated file.
     # @return [String]
     attr_accessor :file_prefix
@@ -31,6 +34,8 @@ module Ginny
       self.attrs = []
       self.modules = []
       self.file_prefix = ""
+      self.body = ""
+      self.default_constructor = false
     end
 
     # Constructor for a Class. Use `create`, not `new`.
@@ -46,6 +51,7 @@ module Ginny
       c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       c.body        = args[:body] unless args[:body].nil?
       c.file_prefix = args[:file_prefix] || ""
+      c.default_constructor = args[:default_constructor]
       return c
     end
 
@@ -67,13 +73,27 @@ module Ginny
       parts << (self.description&.length&.positive? ? self.description.comment.strip : nil)
       parts << (self.parent.nil? ? "class #{self.class_name()}" : "class #{self.class_name()} < #{self.parent}")
       parts << self.render_attributes()
-      parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
+      parts << self.render_body()
+      # parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
       parts << "end"
       if self.modules.length > 0
         body = parts.compact.join("\n").gsub(/([[:blank:]]+)$/, "")
         return Ginny.mod(body, self.modules)
       end
       return parts.compact.join("\n").gsub(/([[:blank:]]+)$/, "")
+    end
+
+    # @return [String,nil]
+    def render_body()
+      if self.body.length > 0
+        if self.default_constructor
+          return ("\n" + self.constructor() + "\n\n" + self.body).indent(2)
+        end
+        return self.body.indent(2)
+      end
+      # binding.pry
+      return "\n" + self.constructor().indent(2) if self.default_constructor
+      return nil
     end
 
     # @return [String]
@@ -98,6 +118,20 @@ module Ginny
         inflections.singular(/([t])a\z/i, '\1a')
       end
       return self.file_prefix + inflector.underscore(self.name) + ".rb"
+    end
+
+    # @return [String]
+    def constructor()
+      char = self.name.chr.downcase
+      body = "#{char} = #{self.class_name}.new\n"
+      body << self.attrs.map { |a| "#{char}.#{a.name} = params[:#{a.name}]\n" }.join()
+      body << "return #{char}\n"
+      Ginny::Func.create({
+        name: "self.create",
+        return_type: "self",
+        params: [{ name: "params", type: "Hash", default: {} }],
+        body: body,
+      }).render()
     end
 
   end
