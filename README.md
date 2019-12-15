@@ -119,7 +119,7 @@ end
 | default_constructor | `Boolean`            | If `true`, a method similar to [ActiveRecord::Base.create][create_method_link] will be generated for the class. |
 | attrs               | `Array<Ginny::Attr>` | An array of Attrs.                                                                                              |
 
-[create_method_link][https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create]
+[create_method_link]: https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create 
 
 ### `Ginny::Attr`
 

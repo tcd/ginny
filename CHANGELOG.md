@@ -8,7 +8,7 @@
 
 - Add `default_constructor` option for `Ginny::Class`, which will generate a method similar to [ActiveRecord::Base.create][create_method_link] for the class.
 
-[create_method_link][https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create]
+[create_method_link]: https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create 
 
 ## 0.5.4 (2019-12-09)
 
