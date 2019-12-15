@@ -6,12 +6,12 @@ options = {}
 
 optparse = OptionParser.new do |opts|
   opts.banner = "Usage: ginny [options] [path]"
-  options[:verbose] = false
-  opts.on("-v", "--verbose", "Output more information") do
-    options[:verbose] = true
-  end
   opts.on("-h", "--help", "Display this screen") do
     puts(opts)
+    exit(0)
+  end
+  opts.on("-v", "--version", "Display version information") do
+    puts("Ginny version #{Ginny::VERSION}")
     exit(0)
   end
 end

@@ -2,6 +2,12 @@
 
 <!-- ## master (unreleased) -->
 
+## 0.6.1 (2019-12-14)
+
+### Added
+
+- Add `-v`/`--version` flag to the Ginny command line tool.
+
 ## 0.6.0 (2019-12-14)
 
 ### Added
