@@ -25,7 +25,9 @@ properties:
     type: string
   modules:
     description: List of modules to declare the class inside.
-    type: string
+    type: array
+    items:
+      type: string
   name:
     description: Name of the class.
     type: string

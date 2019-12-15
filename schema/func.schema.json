@@ -18,7 +18,10 @@
     },
     "modules": {
       "description": "List of modules to declare the function inside of.",
-      "type": "string"
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "name": {
       "description": "Name of the function.",
