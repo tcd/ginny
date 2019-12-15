@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ginny (0.5.4)
+    ginny (0.6.0)
       coolkit (~> 0.2.2)
       dry-inflector (~> 0.2.0)
 
