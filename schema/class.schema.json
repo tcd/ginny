@@ -19,6 +19,10 @@
       "description": "String to write into the body of the class.",
       "type": "string"
     },
+    "classify_name": {
+      "description": "Set this to `false` to disable *classification* and use raw `name` input.",
+      "type": "string"
+    },
     "default_constructor": {
       "description": "If `true`, a method similar to [ActiveRecord::Base.create](https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create) will be generated for the class.",
       "type": "boolean"

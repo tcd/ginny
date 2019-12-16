@@ -9,7 +9,7 @@
 [rubygems]: https://rubygems.org/gems/ginny
 [travis-ci]: https://travis-ci.org/tcd/ginny
 [coveralls-ci]: https://coveralls.io/github/tcd/ginny?branch=master
-[rubydoc-gem]: https://www.rubydoc.info/gems/ginny/0.6.1
+[rubydoc-gem]: https://www.rubydoc.info/gems/ginny/0.6.2
 [license]: https://github.com/tcd/ginny/blob/master/LICENSE.txt
 
 
@@ -109,15 +109,16 @@ end
 
 ### `Ginny::Class`
 
-|        Name         |         Type         |                                                   Description                                                   |
-| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------- |
-| name (required)     | `String`             | Name of the class.                                                                                              |
-| description         | `String`             | Description of the class. [Markdown][markdown] is supported.                                                    |
-| body                | `String`             | String to write into the body of the class.                                                                     |
-| parent              | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`)                                                  |
-| modules             | `Array<String>`      | List of modules to declare the class inside of                                                                  |
-| default_constructor | `Boolean`            | If `true`, a method similar to [ActiveRecord::Base.create][create_method_link] will be generated for the class. |
-| attrs               | `Array<Ginny::Attr>` | An array of Attrs.                                                                                              |
+|        Name         |         Type         |                                                                                         Description                                                                                          |
+| ------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name (required)     | `String`             | Name of the class.                                                                                                                                                                           |
+| description         | `String`             | Description of the class. [Markdown][markdown] is supported.                                                                                                                                 |
+| body                | `String`             | String to write into the body of the class.                                                                                                                                                  |
+| parent              | `String`             | Name of a class to inherit from. (Ex: `YourNewClass < Parent`)                                                                                                                               |
+| modules             | `Array<String>`      | List of modules to declare the class inside of                                                                                                                                               |
+| default_constructor | `Boolean`            | If `true`, a method similar to [ActiveRecord::Base.create][create_method_link] will be generated for the class.                                                                              |
+| attrs               | `Array<Ginny::Attr>` | An array of instance attributes.                                                                                                                                                             |
+| classify_name       | `Boolean`            | By default, names are *classified* using [Dry::Inflector#classify](https://github.com/dry-rb/dry-inflector#usage). Set this to `false` to disable *classification* and use raw `name` input. |
 
 [create_method_link]: https://apidock.com/rails/ActiveRecord/Persistence/ClassMethods/create 
 

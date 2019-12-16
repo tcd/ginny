@@ -28,6 +28,10 @@ module Ginny
     # String to prepend to the name of the generated file.
     # @return [String]
     attr_accessor :file_prefix
+    # By default, names are *classified* using [Dry::Inflector#classify](https://github.com/dry-rb/dry-inflector#usage).
+    # Set this to `false` to disable *classification* and use raw `name` input.
+    # @return [Boolean]
+    attr_accessor :classify_name
 
     # @return [void]
     def initialize()
@@ -36,6 +40,7 @@ module Ginny
       self.file_prefix = ""
       self.body = ""
       self.default_constructor = false
+      self.classify_name = true
     end
 
     # Constructor for a Class. Use `create`, not `new`.
@@ -51,6 +56,7 @@ module Ginny
       c.attrs       = Ginny::Attr.from_array(args[:attrs]) if args[:attrs]&.is_a?(Array)
       c.body        = args[:body] unless args[:body].nil?
       c.file_prefix = args[:file_prefix] || ""
+      c.classify_name = args[:classify_name] unless args[:classify_name].nil?
       c.default_constructor = args[:default_constructor]
       return c
     end
@@ -74,7 +80,6 @@ module Ginny
       parts << (self.parent.nil? ? "class #{self.class_name()}" : "class #{self.class_name()} < #{self.parent}")
       parts << self.render_attributes()
       parts << self.render_body()
-      # parts << (self.body&.length&.positive? ? self.body.indent(2) : nil)
       parts << "end"
       if self.modules.length > 0
         body = parts.compact.join("\n").gsub(/([[:blank:]]+)$/, "")
@@ -91,7 +96,6 @@ module Ginny
         end
         return self.body.indent(2)
       end
-      # binding.pry
       return "\n" + self.constructor().indent(2) if self.default_constructor
       return nil
     end
@@ -104,6 +108,9 @@ module Ginny
 
     # @return [String]
     def class_name()
+      return self.name if !self.classify_name
+      # Don't classify two letter names.
+      # return self.name if self.name =~ /\A^[A-Za-z]{2}$\Z/
       inflector = Dry::Inflector.new do |inflections|
         inflections.plural("data", "data")
         inflections.singular(/([t])a\z/i, '\1a')

@@ -1,6 +1,12 @@
 # Changelog
 
-## master (unreleased)
+<!-- ## master (unreleased) -->
+
+## 0.6.2 (2019-12-16)
+
+### Added
+
+- Add `classify_name` option for `Ginny::Class`, which can disable the use of [`Dry::Inflector#classify`](https://github.com/dry-rb/dry-inflector#usage) on the class name.
 
 ### Fixed
 

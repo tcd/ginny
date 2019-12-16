@@ -263,4 +263,12 @@ class ClassTest < Minitest::Test
     assert_equal(want, have)
   end
 
+  def test_class_name
+    c1 = Ginny::Class.create({name: "SecurityInformationQualifiers"})
+    assert_equal("SecurityInformationQualifier", c1.class_name())
+    c2 = Ginny::Class.create({name: "Security_Information_Qualifiers"})
+    assert_equal("SecurityInformationQualifier", c2.class_name())
+    c3 = Ginny::Class.create({name: "GS", classify_name: false})
+    assert_equal("GS", c3.class_name())
+  end
 end
