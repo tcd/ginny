@@ -27,6 +27,14 @@ Minitest::Reporters.use!([
   # Minitest::Reporters::SpecReporter.new,
 ])
 
+
+# ==============================================================================
+# Helper Methods
+# ==============================================================================
+
+require "time"
+require "fileutils"
+
 # Return Pathname for a file used in tests.
 #
 # @param path [String]
@@ -34,8 +42,32 @@ def file_fixture(path)
   return File.expand_path(File.join(File.dirname(__dir__), "test", "fixtures", "files", path))
 end
 
+# Path to a scratch folder that can be used for testing.
+#
+# The folder is created before and emptied after each time the test suite is run.
+#
+# @return [String]
+def scratch_folder()
+  return File.expand_path(File.join(File.dirname(__dir__), "tmp", "scratch-folder-for-testing"))
+end
+
+# @return [void]
+def make_test_folder()
+  FileUtils.mkdir_p(scratch_folder())
+end
+
+# @return [void]
+def make_test_folder()
+  FileUtils.rm_rf(scratch_folder())
+end
+
+# ==============================================================================
+# Custom Assertions
+# ==============================================================================
+
 module MiniTest::Assertions
-  # `assert_equal` with a default message.
+  # Calls `assert_equal`; prints arguments if the assertion fails.
+  #
   # @raise [ArgumentError] unless both arguments are strings
   # @param want [String] Expected
   # @param have [String] Actual

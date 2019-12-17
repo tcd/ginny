@@ -9,7 +9,7 @@
 [rubygems]: https://rubygems.org/gems/ginny
 [travis-ci]: https://travis-ci.org/tcd/ginny
 [coveralls-ci]: https://coveralls.io/github/tcd/ginny?branch=master
-[rubydoc-gem]: https://www.rubydoc.info/gems/ginny/0.6.2
+[rubydoc-gem]: https://www.rubydoc.info/gems/ginny/0.6.3
 [license]: https://github.com/tcd/ginny/blob/master/LICENSE.txt
 
 

@@ -8,7 +8,7 @@ class ClassTest < Minitest::Test
       end
     RB
     have = Ginny::Class.create(name: "Example").render()
-    assert_equal_and_print(want, have)
+    assert_equal(want, have)
   end
 
   def test_empty_class_with_description
@@ -81,7 +81,7 @@ class ClassTest < Minitest::Test
       ],
     )
     have = g_class.render_body()
-    assert_equal_and_print(want, have.strip)
+    assert_equal(want, have.strip)
   end
 
   def test_default_constructor_with_body
@@ -117,7 +117,7 @@ class ClassTest < Minitest::Test
         { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
       ],
     ).render()
-    assert_equal_and_print(want, have.strip)
+    assert_equal(want, have.strip)
   end
 
   def test_default_constructor_without_body
@@ -150,7 +150,7 @@ class ClassTest < Minitest::Test
         { name: "age", description: "Number of years the human has been alive.", type: "Integer" },
       ],
     ).render()
-    assert_equal_and_print(want, have.strip)
+    assert_equal(want, have.strip)
   end
 
   def test_class_with_in_module

@@ -2,6 +2,13 @@
 
 <!-- ## master (unreleased) -->
 
+## 0.6.3 (2019-12-17)
+
+### Added
+
+- `file` keyword argument to `Ginny::Class.generate`, to set the name of the generated file.
+- New helper methods for tests.
+
 ## 0.6.2 (2019-12-16)
 
 ### Added

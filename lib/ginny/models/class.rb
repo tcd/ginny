@@ -64,9 +64,11 @@ module Ginny
     # Write generated code out to a file.
     #
     # @param folder [String]
+    # @param file [String]
     # @return [String]
-    def generate(folder = ".")
-      path = File.join(File.expand_path(folder), self.file_name())
+    def generate(folder = ".", file: nil)
+      name = file.nil? ? self.file_name() : file
+      path = File.join(File.expand_path(folder), name)
       File.open(path, "a") { |f| f.write(self.render() + "\n") }
       return path
     end
